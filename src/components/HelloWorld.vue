@@ -1,13 +1,6 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <i class="el-icon-platform-eleme"></i>
-    <i class="el-icon-share"></i>
-    <i class="el-icon-delete"></i>
-    <el-button type="primary" icon="el-icon-search">搜索</el-button>
-
-     <el-radio v-model="radio" label="1">备选项</el-radio>
-      <el-radio v-model="radio" label="2">备选项</el-radio>
   </div>
 </template>
 

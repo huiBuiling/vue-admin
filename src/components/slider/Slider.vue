@@ -28,7 +28,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { routes} from '@/router';
-import SliderItem from '@/views/SliderItem.vue';
+import SliderItem from '@/components/slider/SliderItem.vue';
 @Component({
   name: 'Slider',
   components: {
