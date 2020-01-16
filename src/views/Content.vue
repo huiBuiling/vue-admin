@@ -2,10 +2,6 @@
   <!-- 内容栏 -->
   <div class="ad-con" :style="{marginLeft: navWidth}">
     <div class="ad-con-logo">
-<!--      <el-radio-group v-model="isC" style="margin-bottom: 20px;" @change="toggleSlider">-->
-<!--        <el-radio-button :label="false">展开</el-radio-button>-->
-<!--        <el-radio-button :label="true">收起</el-radio-button>-->
-<!--      </el-radio-group>-->
       <div class="ad-con-fold" @click="toggleSlider">
         <i :class="iconClass" />
       </div>
@@ -21,7 +17,7 @@
 <script lang="ts">
 import { Component, Vue, Prop, Emit, Model } from 'vue-property-decorator';
 @Component
-export default class extends Vue {
+export default class Content extends Vue {
   @Prop({default: '200px'}) private navWidth: string | undefined;
   @Prop({default: false}) private isCollapse: boolean | undefined;
 

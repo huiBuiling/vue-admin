@@ -7,20 +7,19 @@ $font18: 18px;
 $font20: 20px;
 
 // bg
-$bgColor: #2A3259;
-$fontColor: #fff;
-$font: $font14;
+$bgColor: #2A2F42;
+$color: #fff;
+$logoBgColor: #2A3259;
 
 // bar
 $barColor: #1F2438;
-$barFontColor: #fff;
+$barFontColor: $color;
 $barFont: $font14;
 $barLiBgColor: rgba(90,106,223, .3);
 $barLiBorColor: #5868DB;
 
 // content
-$conColor: #2A2F42;
-$conFontColor: #fff;
+$conFontColor: $color;
 $conFont: $font14;
 
 

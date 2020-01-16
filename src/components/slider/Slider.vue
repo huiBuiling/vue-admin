@@ -30,22 +30,22 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { routes} from '@/router';
 import SliderItem from '@/components/slider/SliderItem.vue';
 @Component({
-  name: 'Slider',
+  // name: 'Slider',
   components: {
     SliderItem
   }
 })
-export default class extends Vue {
+export default class Slider extends Vue {
   @Prop({ default: '200px' }) private navWidth!: string;
   @Prop({default: false}) private isCollapse!: boolean | undefined;
 
   private menuActive: string = '1';
 
-  private handleOpen(key: string, keyPath: any) {
+  handleOpen(key: string, keyPath: any) {
     console.log(key, keyPath);
   }
 
-  private handleClose(key: string, keyPath: any) {
+  handleClose(key: string, keyPath: any) {
     console.log(key, keyPath);
   }
 

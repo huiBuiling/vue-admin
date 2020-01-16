@@ -25,7 +25,7 @@ import Slider from '@/components/slider/Slider.vue';
      Content,
    },
 })
-export default class extends Vue {
+export default class Index extends Vue {
   private isCollapse: boolean = false;
   private navWidth: string = '200px';
 

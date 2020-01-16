@@ -8,12 +8,11 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Index from '@/views/Index.vue';
 @Component({
-  name: 'app',
   components: {
     Index
   }
 })
-export default class extends Vue {}
+export default class App extends Vue {}
 </script>
 
 <style lang="scss">

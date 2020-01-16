@@ -3,6 +3,7 @@
     <div class="ad-nav-menu">
         <div v-for="(itemM, indexM) in menuArr">
             <!--有子级菜单-->
+            <!--:index="curPathFun(itemM.path)"-->
             <el-submenu
                     :index="itemM.path"
                     v-if="itemM.children"
@@ -15,6 +16,7 @@
                 <SliderItem
                         :menuArr="itemM.children"
                         :isParent="false"
+                        :parentPath="itemM.path"
                 />
             </el-submenu>
 
@@ -32,12 +34,21 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-@Component({
-  name: 'SliderItem',
-})
-export default class extends Vue {
+@Component
+export default class SliderItem extends Vue {
   @Prop() private menuArr!: any;
   @Prop({ default: true }) private isParent!: boolean | undefined;
+  @Prop() private parentPath!: string;
+
+  private curPathFun(path: any) {
+    let curPath;
+    if (!this.isParent && this.parentPath) {
+      curPath = !this.isParent && this.parentPath && `${this.parentPath}${path}`;
+    } else {
+      curPath = path;
+    }
+    return curPath;
+  }
 }
 </script>
 

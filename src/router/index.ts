@@ -5,39 +5,36 @@ Vue.use(VueRouter);
 
 // RouteConfig 的类型定义
 export const routes: RouteConfig[] = [
-  /*{
-    path: '/',
-    name: 'index',
-    component: () => import(/!* webpackChunkName: "home" *!/ '../views/Home.vue'),
+  {
+    path: '/chart',
+    name: 'chart',
+    // meta: {
+    //   title: 'chart',
+    //   icon: 'chart'
+    // },
+    component: () => import(/* webpackChunkName: "chart" */ '@/components/chart/ChartView.vue'),
     children: [
       {
-        path: '/home2',
-        name: 'home2',
-        component: () => import(/!* webpackChunkName: "home" *!/ '../views/Home.vue'),
+        path: '/chart/lineChart',
+        name: 'lineChart',
+        component: () => import(/* webpackChunkName: "lineChart" */ '@/components/chart/LineChart.vue'),
       },
       {
-        path: '/about2',
-        name: 'about2',
-        component: () => import(/!* webpackChunkName: "about" *!/ '../views/About.vue'),
-        children: [
-          {
-            path: '/home3',
-            name: 'home3',
-            component: () => import(/!* webpackChunkName: "home" *!/ '../views/Home.vue'),
-          },
-          {
-            path: '/about3',
-            name: 'about3',
-            component: () => import(/!* webpackChunkName: "about" *!/ '../views/About.vue'),
-          },
-        ],
+        path: '/chart/columnarChart',
+        name: 'columnarChart',
+        component: () => import(/* webpackChunkName: "lineChart" */ '@/components/chart/ColumnarChart.vue'),
       },
-    ]
-  },*/
+      {
+        path: '/chart/pieChart',
+        name: 'pieChart',
+        component: () => import(/* webpackChunkName: "lineChart" */ '@/components/chart/PieChart.vue'),
+      },
+    ],
+  },
   {
     path: '/',
     name: 'home',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
+    component: () => import(/* webpackChunkName: "home" */ '@/components/home/Home.vue'),
   },
   {
     path: '/about',
