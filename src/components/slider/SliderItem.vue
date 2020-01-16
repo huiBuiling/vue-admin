@@ -10,7 +10,7 @@
             >
                 <template slot="title">
                     <i class="el-icon-location" v-if="isParent"/>
-                    <span slot="title">{{itemM.name}}</span>
+                    <span slot="title">{{$t('route.' + itemM.name)}}</span>
                 </template>
 
                 <SliderItem
@@ -26,7 +26,7 @@
                     v-if="itemM.children === undefined"
             >
                 <i class="el-icon-menu" v-if="isParent"/>
-                <span slot="title">{{itemM.name}}</span>
+                <span slot="title">{{$t('route.' + itemM.name)}}</span>
             </el-menu-item>
         </div>
     </div>
@@ -34,6 +34,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+
 @Component
 export default class SliderItem extends Vue {
   @Prop() private menuArr!: any;

@@ -20,9 +20,9 @@ export const routes: RouteConfig[] = [
         component: () => import(/* webpackChunkName: "lineChart" */ '@/components/chart/LineChart.vue'),
       },
       {
-        path: '/chart/columnarChart',
-        name: 'columnarChart',
-        component: () => import(/* webpackChunkName: "lineChart" */ '@/components/chart/ColumnarChart.vue'),
+        path: '/chart/barChart',
+        name: 'barChart',
+        component: () => import(/* webpackChunkName: "lineChart" */ '@/components/chart/BarChart.vue'),
       },
       {
         path: '/chart/pieChart',
