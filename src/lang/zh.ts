@@ -6,6 +6,11 @@ const data = {
     lineChart: '折线图',
     barChart: '柱状图',
     pieChart: '饼状图',
+    comprehensiveChart: '综合图表',
+    editor: '编辑器',
+    markDown: 'MarkDown',
+    richTextEditor: '富文本编辑器',
+    jsonEditor: 'Json编辑器',
   },
   toolBar: {
     home: '首页',
@@ -21,7 +26,7 @@ const data = {
     showTags: '显示历史标签',
     theme: '主题色',
     fixedH: '固定表头',
-  }
+  },
 };
 
 export default data;

@@ -20,17 +20,17 @@ const messages: any = {
   zh: {
     ...zh,
     ...elZhLocale,
-  }
+  },
 };
 
 // 初始获取当前语言
 const curLocale = () => {
   // Default language is zh
-  return 'zh'
+  return 'zh';
 };
 
 const i18n = new VueI18n({ 
-   locale: curLocale(), // 定义默认语言为中文 
+   locale: curLocale(), // 定义默认语言为中文
    messages,
 });
 

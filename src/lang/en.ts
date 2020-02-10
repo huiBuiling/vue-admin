@@ -6,6 +6,11 @@ const data = {
     lineChart: 'LineChart',
     barChart: 'BarChart',
     pieChart: 'PieChart',
+    comprehensiveChart: 'ComprehensiveChart',
+    editor: 'Editor',
+    markDown: 'MarkDown',
+    richTextEditor: 'RichTextEditor',
+    jsonEditor: 'JsonEditor',
   },
   toolBar: {
     home: 'Home',
@@ -21,7 +26,7 @@ const data = {
     showTags: 'Show Tags',
     theme: 'Theme Color',
     fixedH: 'Fixed Header',
-  }
+  },
 };
 
 export default data;
