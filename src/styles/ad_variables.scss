@@ -6,20 +6,32 @@ $font16: 16px;
 $font18: 18px;
 $font20: 20px;
 
-// bg
-$bgColor: #2A2F42;
+// color
 $color: #fff;
-$logoBgColor: #2A3259;
+$color2: #333;
 
-// bar
-$barColor: #1F2438;
+// left
+$logoColor: #3C444D;
+$barColor: #353D44;
 $barFontColor: $color;
 $barFont: $font14;
-$barLiBgColor: rgba(90,106,223, .3);
-$barLiBorColor: #5868DB;
+$barLiBgColor: #2C3138;
+$barLiBorColor: #bda29a;
 
-// content
-$conFontColor: $color;
+// right
+$conBarColor: $color;
+$conBarFontColor: $color2;
+$conBarFont: $font14;
+$conColor: #F2F2F2;
+$conFontColor: $color2;
 $conFont: $font14;
+
+// divCon
+@mixin divCon{
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
 
 

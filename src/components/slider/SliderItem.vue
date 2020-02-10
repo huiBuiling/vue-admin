@@ -9,7 +9,7 @@
                     v-if="itemM.children"
             >
                 <template slot="title">
-                    <i class="el-icon-location" v-if="isParent"/>
+                    <i :class="itemM.meta.icon" v-if="isParent"/>
                     <span slot="title">{{$t('route.' + itemM.name)}}</span>
                 </template>
 
@@ -25,7 +25,7 @@
                     :index="itemM.path"
                     v-if="itemM.children === undefined"
             >
-                <i class="el-icon-menu" v-if="isParent"/>
+                <i :class="itemM.meta.icon" v-if="isParent"/>
                 <span slot="title">{{$t('route.' + itemM.name)}}</span>
             </el-menu-item>
         </div>

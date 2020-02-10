@@ -41,11 +41,11 @@ export default class Slider extends Vue {
 
   private menuActive: string = '1';
 
-  handleOpen(key: string, keyPath: any) {
+  private handleOpen(key: string, keyPath: any) {
     console.log(key, keyPath);
   }
 
-  handleClose(key: string, keyPath: any) {
+  private handleClose(key: string, keyPath: any) {
     console.log(key, keyPath);
   }
 

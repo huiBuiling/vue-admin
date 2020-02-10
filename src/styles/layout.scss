@@ -2,7 +2,7 @@
 .ad-app {
     width: 100%;
     height: 100%;
-    background-color: $bgColor;
+    background-color: $conColor;
     color: $color;
     font-size: $font14;
     .ad-nav{
@@ -18,7 +18,7 @@
         height: 50px;
         line-height: 50px;
         font-size: $barFont;
-        background-color: $logoBgColor;
+        background-color: $logoColor;
         text-align: center;
       }
       .ad-nav-con{
@@ -34,8 +34,9 @@
       .ad-con-logo{
         height: 50px;
         line-height: 50px;
-        background-color: $barColor;
-        color: $barFontColor;
+        background-color: $conBarColor;
+        color: $conBarFontColor;
+        font-size: $conBarFont;
         text-align: left;
         padding: 0 20px;
         .ad-con-fold{
@@ -49,7 +50,7 @@
       .ad-con-con{
         height: calc(100% - 50px);
         overflow: auto;
-        //background-color: $bgColor;
+        //background-color: $conColor;
       }
     }
   }
@@ -71,6 +72,11 @@
   .el-menu-item, .el-submenu__title{
     color: $barFontColor;
     font-size: $barFont;
+    height: 44px !important;
+    line-height: 44px !important;
+    i{
+      color: $color;
+    }
     .ad-link{
 
     }
@@ -85,13 +91,72 @@
   }
 }
 
-
+/* components */
 .ad-chart{
   position: relative;
-  height: 100%;
-  .ad-chart-line, .ad-chart-column{
-    height: 100%;
-    padding: 40px 0;
+  @include divCon;
+  .ad-chart-line, .ad-chart-column, .ad-chart-pie{
+    background: $color;
+    @include divCon;
+  }
+  .ad-chart-complex{
+    @include divCon;
+    .ad-chart-complex-i{
+      width: 300px;
+      height: 110px;
+      background: $color;
+      padding: 20px 0;
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
   }
 }
+
+.ad-editor{
+  position: relative;
+  height: 100%;
+  .ad-editor-mk, .ad-editor-json, .ad-editor-rich{
+    @include divCon;
+  }
+  .ad-editor-mk{
+    .markdown-body{
+      min-height: 300px !important;
+      height: 100%;
+    }
+  }
+  .ad-editor-json{
+    .CodeMirror{
+      height: 100%;
+      background: $color;
+      text-align: left;
+      .CodeMirror-gutter{
+        background: #3c444d;
+      }
+    }
+    .cm-s-rubyblue .CodeMirror-gutters{
+      border-color: $barLiBorColor !important;
+    }
+  }
+  .ad-editor-rich{
+    .quill-editor{
+      height: 100%;
+      background: $color;
+      .ql-toolbar.ql-snow{
+        border-width: 0 0 1px 0;
+      }
+      .ql-container{
+        height: calc(100% - 41px);
+        border: none !important;
+        .ql-editor{
+          color: $color2;
+          font-size: 15px;
+          line-height: 1.5;
+          font-family: Menlo, "Ubuntu Mono", Consolas, "Courier New", "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+        }
+      }
+    }
+  }
+}
+
 
