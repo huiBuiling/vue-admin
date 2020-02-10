@@ -1,14 +1,12 @@
 <template>
-  <div class="ad-chart-line">
-    <div
-      :id="chartData.id"
-      :style="{
-        maxWidth: '1024px',
-        width: chartData.style.width,
-        height: chartData.style.height
-      }"
-    />
-  </div>
+  <div
+    :id="chartData.id"
+    :style="{
+      maxWidth: '1024px',
+      width: chartData.style.width,
+      height: chartData.style.height
+    }"
+  />
 </template>
 
 <script lang="ts">

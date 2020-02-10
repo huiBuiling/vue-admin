@@ -1,32 +1,20 @@
 <template>
   <div class="ad-chart-line">
-<!--    <h3>{{ msg }}</h3>-->
     <div
       :id="id"
       :style="{height, width, maxWidth: '1024px'}"
     />
-
-    <div style="margin-top: 50px">
-      <SmallLineChart
-              :chartData = "lineChartData"
-      />
-    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import echarts from 'echarts';
-import SmallLineChart from '@/components/chart/SmallLineChart.vue';
 
 @Component({
   name: 'lineChart',
-  components: {
-    SmallLineChart,
-  },
 })
 export default class LineChart extends Vue {
-  private msg: string = '线性图';
   private chart: any = {};
   private width: string = '100%';
   private height: string = '400px';
@@ -35,7 +23,7 @@ export default class LineChart extends Vue {
       title: {
           text: '未来一周气温变化',
           textStyle:{
-              color: '#fff',
+              color: '#333',
               fontStyle: 'normal',
               fontWeight: 'normal',
               fontSize: '16',
@@ -138,34 +126,6 @@ export default class LineChart extends Vue {
             },
         ],
     };
-
-  // smallLineChart
-  private lineChartData: any = {
-      title: '公司福利',
-      id: 'lineA',
-      chatColor: '137,75,222',
-      style: {
-        height: '70px',
-        width: '100%',
-      },
-      xAxis: {show: false},
-      yAxis: {show: false},
-      grid: {
-          top: '0',
-          bottom: '2%',
-          left: '0',
-          right: '2%',
-      },
-      xAxisData: ['绩效奖金','月入2万', '年终分红', '定期旅游', '周末双休',
-        '零食丰富','每周羽毛球','周末双休','零食丰富','每周羽毛球'],
-      seriesData: [0,80, 40, 178, 40,123,170, 40,123,0],
-      series: {
-          showSymbol: false,
-          areaStyle: {
-              color: 'rgb(137,75,222)',  // 线条下面积颜色
-          },
-      },
-  };
 
   mounted() {
     this.initChart();

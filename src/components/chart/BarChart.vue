@@ -21,136 +21,123 @@ export default class ColumnarChart extends Vue {
   private chart: any = {};
   private chartOption: any = {};
   private chartData: any = {
-      title: '公司福利',
-      id: 'columnA',
-      // chatColor: '137,75,222',
-      style: {
-        height: '70px',
-        width: '100%',
-      },
-      xAxis: {show:  false},
-      yAxis: {show: false},
-      grid: {
-          top: '9',
-          bottom: '2%',
-          left: '0',
-          right: '2%',
-      },
-      xAxisData: ['绩效奖金', '月入2万', '年终分红', '定期旅游', '周末双休', '零食丰富', '每周羽毛球', '周末双休', '零食丰富', '每周羽毛球'],
-      seriesData: [0, 80, 40, 178, 40, 123, 170, 40, 123, 0],
-      series: {
-          showSymbol:false,
-          // areaStyle: {
-          //     color:'rgb(137,75,222)'  //线条下面积颜色
-          // }
-      },
+    id: 'columnA',
+    style: {
+      width: '100%',
+      height: '100%',
+    },
+  };
+  private xAxisData: any = [];
+  private data1: any = [];
+  private data2: any = [];
+  private data3: any = [];
+  private data4: any = [];
+  private emphasisStyle: object = {
+      itemStyle: {
+          barBorderWidth: 1,
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowOffsetY: 0,
+          shadowColor: 'rgba(0,0,0,0.5)'
+      }
   };
 
   mounted() {
-    const { isXAxis, xAxis, isYAxis, yAxis,
-            chatColor, grid, tooltip, title,
-            isSeries, seriesData, series, xAxisData } = this.chartData;
+    for (let i = 0; i < 10; i++) {
+      this.xAxisData.push('Class' + i);
+      this.data1.push((Math.random() * 2).toFixed(2));
+      this.data2.push(-Math.random().toFixed(2));
+      this.data3.push((Math.random() * 5).toFixed(2));
+      this.data4.push((Math.random() + 0.3).toFixed(2));
+  }
+
     this.chartOption = {
-          // 背景
-          // backgroundColor: '#FFF',
-          // 显示位置
-          grid: grid !== undefined ? grid :{
-              top: '9%',
-              bottom: '19%',
-              left: '6%',
-              right: '4%'
-          },
-          // 提示
-          tooltip: tooltip !== undefined ? tooltip :{
-              trigger: 'axis',  // 触发类型
-              label: {
-                  show: true,
-              },
-              axisPointer: {
-                  type: 'none',  // 指示器类型 line shadow
-              },
-              backgroundColor: 'rgba(255,255,255,.9)',  // 浮层背景色
-              borderWidth: 1,
-              // borderColor:chatColor !== undefined ? `rgb(${chatColor})` : 'rgb(245,250,254)',  // 浮层边框色
-              borderColor: 'rgba(255,255,255,.9)',
-              extraCssText: 'box-shadow: 0 0 10px rgb(174,174,174)',   // 浮层阴影色
-              padding: [5],
-              textStyle:{
-                  // 文字样式
-                  color: 'rgba(87,87,87)',
-                  width: 200,
-              },
-              formatter: (data: any) => {
-                  let html = '';
-                  html += '<style>p{margin:0;}em{background:' + data[0].color + '}';
-                  html += 'em{width: 10px;height: 10px;display: inline-block;vertical-align: -5px;margin-right: 8px;border-radius: 50%;}</style>';
-                  html += '<p><em>&nbsp;</em>' + data[0].name + ' : ' + data[0].data + '</p>';
-                  return html;
-              }
-          },
-          xAxis: isXAxis ? xAxis : {
-              boundaryGap: true, // 默认，坐标轴留白策略
-              axisLine: {
-                  show: false,
-              },
-              splitLine: {
-                  show: false,
-              },
-              axisTick: {
-                  show: false,
-                  alignWithLabel: true,
-              },
-              data: xAxisData && xAxisData.length > 0 ? xAxisData : ['aa', 'bb', 'cc'],
-              ...xAxis,
-          },
-          yAxis: isYAxis ? yAxis : {
-              axisLine: {
-                  show: false,
-              },
-              splitLine: {
-                  show: true,
-                  lineStyle: {
-                      type: 'dashed',  // 背景线条类型
-                      color: chatColor !== undefined ? `rgba(${chatColor},.2)` : 'rgba(33,148,246,.2)',   // 背景线条颜色
-                  }
-              },
-              axisTick: {
-                  show: false,
-              },
-              splitArea: {
-                  show: true,
-                  areaStyle: {
-                      color: chatColor !== undefined ? `rgb(${chatColor})` : 'rgb(245,250,254)', // 背景颜色
-                  },
-              },
-              ...yAxis,
-          },
-          // 数据
-          series: isSeries ? series : [{
-              type: 'bar',
-              barWidth:20,     // 柱条的宽度
-              barGap:'13%',    // 不同系列的柱间距离
-              symbol: 'circle',
-              symbolSize: 4,
-              areaStyle: {
-                  color:chatColor !== undefined ? `rgba(${chatColor},.4)` : 'rgba(33,148,246,.4)',  //线条下面积颜色，不设置默认为线条颜色
-              },
-              lineStyle: {
-                  color: chatColor !== undefined ? `rgb(${chatColor})` : 'rgb(33,148,246)',   // 线条颜色
-                  shadowBlur: 12,
-                  shadowColor: chatColor !== undefined ? `rgba(${chatColor},.9)` : 'rgba(33,148,246,.9)', // 外层面积阴影背景色
-                  shadowOffsetX: 1,
-                  shadowOffsetY: 1,
-              },
-              itemStyle: {
-                  color: chatColor !== undefined ? `rgb(${chatColor})` : 'rgb(33,148,246)',  // 圆点颜色
-                  borderWidth: 1,
-                  borderColor: '#FFF',
-              },
-              data: seriesData && seriesData.length > 0 ? seriesData :['300','400','500'],
-              ...series,
-          }]
-      };
+        // backgroundColor: '#fff',
+        legend: {
+            data: ['bar', 'bar2', 'bar3', 'bar4'],
+            left: 10,
+        },
+        brush: {
+            toolbox: ['rect', 'polygon', 'lineX', 'lineY', 'keep', 'clear'],
+            xAxisIndex: 0,
+        },
+        toolbox: {
+            feature: {
+                magicType: {
+                    type: ['stack', 'tiled']
+                },
+                dataView: {},
+            },
+        },
+        tooltip: {},
+        xAxis: {
+            data: this.xAxisData,
+            name: 'X Axis',
+            axisLine: {onZero: true},
+            splitLine: {show: false},
+            splitArea: {show: false},
+        },
+        yAxis: {
+            inverse: true,
+            splitArea: {show: false},
+        },
+        grid: {
+            left: 100,
+        },
+        visualMap: {
+            type: 'continuous',
+            dimension: 1,
+            text: ['High', 'Low'],
+            inverse: true,
+            itemHeight: 200,
+            calculable: true,
+            min: -2,
+            max: 6,
+            top: 60,
+            left: 10,
+            inRange: {
+                colorLightness: [0.4, 0.8],
+            },
+            outOfRange: {
+                color: '#bbb',
+            },
+            controller: {
+                inRange: {
+                    color: '#2f4554',
+                },
+            },
+        },
+        series: [
+            {
+                name: 'bar',
+                type: 'bar',
+                stack: 'one',
+                emphasis: this.emphasisStyle,
+                data: this.data1,
+            },
+            {
+                name: 'bar2',
+                type: 'bar',
+                stack: 'one',
+                emphasis: this.emphasisStyle,
+                data: this.data2,
+            },
+            {
+                name: 'bar3',
+                type: 'bar',
+                stack: 'two',
+                emphasis: this.emphasisStyle,
+                data: this.data3,
+            },
+            {
+                name: 'bar4',
+                type: 'bar',
+                stack: 'two',
+                emphasis: this.emphasisStyle,
+                data: this.data4,
+            },
+        ],
+    };
     this.initChart();
   }
 
