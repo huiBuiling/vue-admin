@@ -29,7 +29,7 @@ const curLocale = () => {
   return 'zh';
 };
 
-const i18n = new VueI18n({ 
+const i18n = new VueI18n({
    locale: curLocale(), // 定义默认语言为中文
    messages,
 });

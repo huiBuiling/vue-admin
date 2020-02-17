@@ -1,5 +1,5 @@
 <template>
-  <div class="ad-editor-rich">
+  <!--<div class="ad-editor-rich">
     <quill-editor
             v-model="content"
             ref="myQuillEditor"
@@ -8,11 +8,11 @@
             @focus="onEditorFocus($event)"
             @change="onEditorChange($event)"
     />
-  </div>
+  </div>-->
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+/*import { Component, Vue } from 'vue-property-decorator';
 import VueQuillEditor from 'vue-quill-editor';
 import 'quill/dist/quill.core.css';
 import 'quill/dist/quill.snow.css';
@@ -23,11 +23,11 @@ Vue.use(VueQuillEditor);
   name: 'richTextEditor',
 })
 export default class RichTextEditor extends Vue {
-  private content: string = '开始编辑...';
+  private content = '开始编辑...';
   private editorOption: object = {};
 
-  private onEditorBlur(){}
-  private onEditorFocus(){}
-  private onEditorChange(){}
-}
+  private onEditorBlur() {}
+  private onEditorFocus() {}
+  private onEditorChange() {}
+}*/
 </script>

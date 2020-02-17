@@ -28,29 +28,29 @@ export default class JsonEditor extends Vue {
     if (this.jsonEditor) {
       const editorValue = this.jsonEditor.getValue();
       if (value !== editorValue) {
-        this.jsonEditor.setValue(JSON.stringify(this.value, null, 2))
+        this.jsonEditor.setValue(JSON.stringify(this.value, null, 2));
       }
     }
   }
 
-  public setValue(value: string) {
+  private setValue(value: string) {
     if (this.jsonEditor) {
       this.jsonEditor.setValue(value);
     }
   }
 
-  public getValue() {
+  private getValue() {
     if (this.jsonEditor) {
       return this.jsonEditor.getValue();
     }
     return '';
   }
 
-  mounted() {
+  private mounted() {
     // 根据DOM元素构造编辑器
     this.jsonEditor = CodeMirror.fromTextArea(this.$refs.textarea as HTMLTextAreaElement, {
       lineNumbers: true, // 显示行号
-      mode: 'application/json', //实现json代码高亮
+      mode: 'application/json', // 实现json代码高亮
       gutters: ['CodeMirror-lint-markers'],
       theme: 'rubyblue', // 设置主题
       lint: true,

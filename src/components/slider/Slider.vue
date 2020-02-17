@@ -32,8 +32,8 @@ import SliderItem from '@/components/slider/SliderItem.vue';
 @Component({
   // name: 'Slider',
   components: {
-    SliderItem
-  }
+    SliderItem,
+  },
 })
 export default class Slider extends Vue {
   @Prop({ default: '200px' }) private navWidth!: string;

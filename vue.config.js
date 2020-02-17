@@ -1,9 +1,9 @@
 const path = require("path");
 module.exports = {
     // 废弃baseUrl  一般运维会配置好的
-    publicPath: process.env.NODE_ENV === "production" ? "/dist/" : "/",
+    publicPath: './',
     //打包的输出目录
-    // outputDir: "dist",
+    outputDir: "dist",
     //保存是校验
     lintOnSave: process.env.NODE_ENV === 'development',
     //允许对内部的 webpack 配置进行更细粒度的修改。

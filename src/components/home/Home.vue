@@ -11,7 +11,7 @@ import HelloWorld from '@/components/home/HelloWorld.vue';
 @Component({
   components: {
     HelloWorld,
-  }
+  },
 })
 export default class Home extends Vue {
   @Prop() private msg!: string;
