@@ -22,7 +22,7 @@ export default class LineChart extends Vue {
   private  lineChart: any = {
       title: {
           text: '未来一周气温变化',
-          textStyle:{
+          textStyle: {
               color: '#333',
               fontStyle: 'normal',
               fontWeight: 'normal',
@@ -56,7 +56,7 @@ export default class LineChart extends Vue {
         xAxis:  {
             type: 'category',
             boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
         },
         yAxis: {
             type: 'value',
@@ -68,30 +68,30 @@ export default class LineChart extends Vue {
             {
                 name: '最高气温',
                 type: 'line',
-                color: "#FC9DB2", // line tooltip color
+                color: '#FC9DB2', // line tooltip color
                 lineStyle: { // line color
-                    color: "#FA5071"
+                    color: '#FA5071',
                 },
                 smooth: true,
                 data: [11, 11, 15, 13, 12, 13, 10],
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
+                        {type: 'min', name: '最小值'},
                     ],
                 },
                 markLine: {
                     data: [
-                        {type: 'average', name: '平均值'}
+                        {type: 'average', name: '平均值'},
                     ],
                 },
             },
             {
                 name: '最低气温',
                 type: 'line',
-                color: "#9DC4FA", // 折线图颜色,搭配markArea为面积图
+                color: '#9DC4FA', // 折线图颜色,搭配markArea为面积图
                 lineStyle: { // 折线的颜色
-                    color: "#3B9DFC"
+                    color: '#3B9DFC',
                 },
                 smooth: true, // 平滑处理
                 data: [1, -2, 2, 5, 3, 2, 0],
@@ -127,7 +127,7 @@ export default class LineChart extends Vue {
         ],
     };
 
-  mounted() {
+  private mounted() {
     this.initChart();
   }
 

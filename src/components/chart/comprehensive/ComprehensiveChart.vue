@@ -47,9 +47,9 @@ export default class ComprehensiveChart extends Vue {
           left: '0',
           right: '2%',
       },
-      xAxisData: ['绩效奖金','月入2万', '年终分红', '定期旅游', '周末双休',
-        '零食丰富','每周羽毛球','周末双休','零食丰富','每周羽毛球'],
-      seriesData: [0,80, 40, 178, 40,123,170, 40,123,0],
+      xAxisData: ['绩效奖金', '月入2万', '年终分红', '定期旅游', '周末双休',
+        '零食丰富', '每周羽毛球', '周末双休', '零食丰富', '每周羽毛球'],
+      seriesData: [0, 80, 40, 178, 40, 123, 170, 40, 123, 0],
       series: {
           showSymbol: false,
           areaStyle: {
@@ -76,7 +76,7 @@ export default class ComprehensiveChart extends Vue {
       xAxisData: ['绩效奖金', '月入2万', '年终分红', '定期旅游', '周末双休', '零食丰富', '每周羽毛球', '周末双休', '零食丰富', '每周羽毛球'],
       seriesData: [0, 80, 40, 178, 40, 123, 170, 40, 123, 0],
       series: {
-          showSymbol:false,
+          showSymbol: false,
       },
   };
 }

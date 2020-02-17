@@ -20,7 +20,7 @@ export default class SmallColumnarChart extends Vue {
   private chart: any = {};
   private chartOption: any = {};
 
-  mounted() {
+  private mounted() {
     const { isXAxis, xAxis, isYAxis, yAxis,
             chatColor, grid, tooltip, title,
             isSeries, seriesData, series, xAxisData } = this.chartData;
@@ -28,14 +28,14 @@ export default class SmallColumnarChart extends Vue {
           // 背景
           // backgroundColor: '#FFF',
           // 显示位置
-          grid: grid !== undefined ? grid :{
+          grid: grid !== undefined ? grid : {
               top: '9%',
               bottom: '19%',
               left: '6%',
-              right: '4%'
+              right: '4%',
           },
           // 提示
-          tooltip: tooltip !== undefined ? tooltip :{
+          tooltip: tooltip !== undefined ? tooltip : {
               trigger: 'axis',  // 触发类型
               label: {
                   show: true,
@@ -49,7 +49,7 @@ export default class SmallColumnarChart extends Vue {
               borderColor: 'rgba(255,255,255,.9)',
               extraCssText: 'box-shadow: 0 0 10px rgb(174,174,174)',   // 浮层阴影色
               padding: [5],
-              textStyle:{
+              textStyle: {
                   // 文字样式
                   color: 'rgba(87,87,87)',
                   width: 200,
@@ -60,7 +60,7 @@ export default class SmallColumnarChart extends Vue {
                   html += 'em{width: 10px;height: 10px;display: inline-block;vertical-align: -5px;margin-right: 8px;border-radius: 50%;}</style>';
                   html += '<p><em>&nbsp;</em>' + data[0].name + ' : ' + data[0].data + '</p>';
                   return html;
-              }
+              },
           },
           xAxis: isXAxis ? xAxis : {
               boundaryGap: true, // 默认，坐标轴留白策略
@@ -85,8 +85,9 @@ export default class SmallColumnarChart extends Vue {
                   show: true,
                   lineStyle: {
                       type: 'dashed',  // 背景线条类型
-                      color: chatColor !== undefined ? `rgba(${chatColor},.2)` : 'rgba(33,148,246,.2)',   // 背景线条颜色
-                  }
+                      color: chatColor !== undefined ? `rgba(${chatColor},.2)`
+                              : 'rgba(33,148,246,.2)',   // 背景线条颜色
+                  },
               },
               axisTick: {
                   show: false,
@@ -94,7 +95,8 @@ export default class SmallColumnarChart extends Vue {
               splitArea: {
                   show: true,
                   areaStyle: {
-                      color: chatColor !== undefined ? `rgb(${chatColor})` : 'rgb(245,250,254)', // 背景颜色
+                      color: chatColor !== undefined ? `rgb(${chatColor})`
+                              : 'rgb(245,250,254)', // 背景颜色
                   },
               },
               ...yAxis,
@@ -102,28 +104,33 @@ export default class SmallColumnarChart extends Vue {
           // 数据
           series: isSeries ? series : [{
               type: 'bar',
-              barWidth:20,     // 柱条的宽度
-              barGap:'13%',    // 不同系列的柱间距离
+              barWidth: 20,     // 柱条的宽度
+              barGap: '13%',    // 不同系列的柱间距离
               symbol: 'circle',
               symbolSize: 4,
               areaStyle: {
-                  color:chatColor !== undefined ? `rgba(${chatColor},.4)` : 'rgba(33,148,246,.4)',  //线条下面积颜色，不设置默认为线条颜色
+                  color: chatColor !== undefined ? `rgba(${chatColor},.4)`
+                          : 'rgba(33,148,246,.4)',  // 线条下面积颜色,不设置默认为线条颜色
               },
               lineStyle: {
-                  color: chatColor !== undefined ? `rgb(${chatColor})` : 'rgb(33,148,246)',   // 线条颜色
+                  color: chatColor !== undefined ? `rgb(${chatColor})`
+                          : 'rgb(33,148,246)',   // 线条颜色
                   shadowBlur: 12,
-                  shadowColor: chatColor !== undefined ? `rgba(${chatColor},.9)` : 'rgba(33,148,246,.9)', // 外层面积阴影背景色
+                  shadowColor: chatColor !== undefined ? `rgba(${chatColor},.9)`
+                          : 'rgba(33,148,246,.9)', // 外层面积阴影背景色
                   shadowOffsetX: 1,
                   shadowOffsetY: 1,
               },
               itemStyle: {
-                  color: chatColor !== undefined ? `rgb(${chatColor})` : 'rgb(33,148,246)',  // 圆点颜色
+                  color: chatColor !== undefined ? `rgb(${chatColor})`
+                          : 'rgb(33,148,246)',  // 圆点颜色
                   borderWidth: 1,
                   borderColor: '#FFF',
               },
-              data: seriesData && seriesData.length > 0 ? seriesData :['300','400','500'],
+              data: seriesData && seriesData.length > 0 ? seriesData
+                      : ['300', '400', '500'],
               ...series,
-          }]
+          }],
       };
     this.initChart();
   }

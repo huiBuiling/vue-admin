@@ -38,11 +38,11 @@ export default class ColumnarChart extends Vue {
           shadowBlur: 10,
           shadowOffsetX: 0,
           shadowOffsetY: 0,
-          shadowColor: 'rgba(0,0,0,0.5)'
-      }
+          shadowColor: 'rgba(0,0,0,0.5)',
+      },
   };
 
-  mounted() {
+  private mounted() {
     for (let i = 0; i < 10; i++) {
       this.xAxisData.push('Class' + i);
       this.data1.push((Math.random() * 2).toFixed(2));
@@ -64,7 +64,7 @@ export default class ColumnarChart extends Vue {
         toolbox: {
             feature: {
                 magicType: {
-                    type: ['stack', 'tiled']
+                    type: ['stack', 'tiled'],
                 },
                 dataView: {},
             },

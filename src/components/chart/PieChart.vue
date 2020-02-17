@@ -21,7 +21,7 @@ export default class PieChart extends Vue {
   private width: string = '100%';
   private height: string = '400px';
   private id: string = 'pie';
-  mounted() {
+  private mounted() {
     this.initChart();
   }
 
@@ -39,7 +39,7 @@ export default class PieChart extends Vue {
         legend: {
             x : 'center',
             y : 'bottom',
-            data:['rose1', 'rose2', 'rose3', 'rose4', 'rose5',
+            data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5',
               'rose6', 'rose7', 'rose8'],
         },
         toolbox: {
@@ -79,7 +79,7 @@ export default class PieChart extends Vue {
                         show: true,
                     },
                 },
-                data:[
+                data: [
                     {value: 10, name: 'rose1'},
                     {value: 5, name: 'rose2'},
                     {value: 15, name: 'rose3'},
@@ -87,7 +87,7 @@ export default class PieChart extends Vue {
                     {value: 20, name: 'rose5'},
                     {value: 35, name: 'rose6'},
                     {value: 30, name: 'rose7'},
-                    {value: 40, name: 'rose8'}
+                    {value: 40, name: 'rose8'},
                 ],
             },
             {
@@ -96,7 +96,7 @@ export default class PieChart extends Vue {
                 radius: [30, 110],
                 center: ['75%', '50%'],
                 roseType: 'area',
-                data:[
+                data: [
                     {value: 10, name: 'rose1'},
                     {value: 5, name: 'rose2'},
                     {value: 15, name: 'rose3'},
@@ -104,7 +104,7 @@ export default class PieChart extends Vue {
                     {value: 20, name: 'rose5'},
                     {value: 35, name: 'rose6'},
                     {value: 30, name: 'rose7'},
-                    {value: 40, name: 'rose8'}
+                    {value: 40, name: 'rose8'},
                 ],
             },
         ],
