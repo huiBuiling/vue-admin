@@ -12,8 +12,9 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { mavonEditor } from 'mavon-editor';
+import VueMavonEditor from 'mavon-editor';
 import 'mavon-editor/dist/css/index.css';
+const mavonEditor: any = VueMavonEditor.mavonEditor;
 Vue.use(mavonEditor);
 
 @Component({
