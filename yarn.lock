@@ -790,6 +790,11 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
+"@tinymce/tinymce-vue@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@tinymce/tinymce-vue/-/tinymce-vue-3.1.0.tgz#350ce4735b91e9f92895b2f165f44203c5584083"
+  integrity sha512-PEEE+qk0qxgfS0kcHJE9l40LvaA+DGSI12LZ1YbNJ5otjlvI+0yOc9DMI1ukVarZi7bGh18NP0lXc9Tno16/0Q==
+
 "@types/codemirror@^0.0.82":
   version "0.0.82"
   resolved "https://registry.yarnpkg.com/@types/codemirror/-/codemirror-0.0.82.tgz#6d0c50036a023980318a6ed9f85ff5cc6b24172a"

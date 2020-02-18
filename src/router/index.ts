@@ -72,7 +72,7 @@ export const routes: RouteConfig[] = [
       {
         path: '/editor/richTextEditor',
         name: 'richTextEditor',
-        component: () => import(/* webpackChunkName: "richTextEditor" */ '@/components/editor/RichTextEditor.vue'),
+        component: () => import(/* webpackChunkName: "richTextEditor" */ '@/components/editor/tinymce/Index.vue'),
       },
     ],
   },
