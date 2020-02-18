@@ -127,7 +127,7 @@ export default class LineChart extends Vue {
         ],
     };
 
-  private mounted() {
+  public mounted() {
     this.initChart();
   }
 

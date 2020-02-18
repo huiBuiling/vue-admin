@@ -46,7 +46,7 @@ export default class JsonEditor extends Vue {
     return '';
   }
 
-  private mounted() {
+  public mounted() {
     // 根据DOM元素构造编辑器
     this.jsonEditor = CodeMirror.fromTextArea(this.$refs.textarea as HTMLTextAreaElement, {
       lineNumbers: true, // 显示行号

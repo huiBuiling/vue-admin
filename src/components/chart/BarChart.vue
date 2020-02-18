@@ -42,7 +42,7 @@ export default class ColumnarChart extends Vue {
       },
   };
 
-  private mounted() {
+  public mounted() {
     for (let i = 0; i < 10; i++) {
       this.xAxisData.push('Class' + i);
       this.data1.push((Math.random() * 2).toFixed(2));
