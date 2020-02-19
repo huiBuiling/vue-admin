@@ -11,7 +11,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import Editor from '@tinymce/tinymce-vue';
 import 'tinymce/tinymce';
 import 'tinymce/themes/silver';
-import 'tinymce/skins/ui/oxide/skin.css'
+import 'tinymce/skins/ui/oxide/skin.css';
 // plugins
 import 'tinymce/plugins/anchor';
 import 'tinymce/plugins/autolink';
