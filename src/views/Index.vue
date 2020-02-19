@@ -18,7 +18,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Content from './Content.vue';
-import Slider from '@/components/slider/Slider.vue';
+import Slider from '@/views/slider/Slider.vue';
 @Component({
    components: {
      Slider,

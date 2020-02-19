@@ -14,12 +14,13 @@ export const routes: RouteConfig[] = [
     component: () => import(/* webpackChunkName: "home" */ '@/components/home/Home.vue'),
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/icon',
+    name: 'icon',
     meta: {
       icon: 'el-icon-ice-cream-round',
     },
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    // component: () => import(/* webpackChunkName: "home" */ '@/components/home/Home.vue'),
+    component: () => import(/* webpackChunkName: "icon" */ '@/views/Icon.vue'),
   },
   {
     path: '/chart',

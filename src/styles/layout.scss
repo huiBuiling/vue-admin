@@ -92,6 +92,60 @@
 }
 
 /* components */
+.ad-icons{
+  position: relative;
+  @include divCon;
+  .ad-icons-div{
+    background: $color;
+    @include divCon;
+    height: auto;
+    .ad-icons-item{
+      width: 12%;
+      min-width: 140px;
+      height: 145px;
+      border: 1px solid #ddd;
+      font-size: 30px;
+      float: left;
+      color: $color2;
+      .svg-icon {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          color: inherit;
+          vertical-align: middle;
+          fill: none;
+          stroke: currentColor;
+      }
+
+      .svg-fill {
+          fill: currentColor;
+          stroke: none;
+      }
+
+      .svg-up {
+          /* default */
+          transform: rotate(0deg);
+      }
+
+      .svg-right {
+          transform: rotate(90deg);
+      }
+
+      .svg-down {
+          transform: rotate(180deg);
+      }
+
+      .svg-left {
+          transform: rotate(-90deg);
+      }
+      .ad-icon-items-text{
+        margin-bottom: 0;
+        font-size: $font18;
+      }
+    }
+  }
+}
+
 .ad-chart{
   position: relative;
   @include divCon;

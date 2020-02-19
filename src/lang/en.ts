@@ -11,6 +11,7 @@ const data = {
     markDown: 'MarkDown',
     richTextEditor: 'RichTextEditor',
     jsonEditor: 'JsonEditor',
+    icon: 'Icon',
   },
   toolBar: {
     home: 'Home',
