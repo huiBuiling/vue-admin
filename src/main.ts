@@ -7,7 +7,7 @@ import '@/styles/index.scss';
 import ElementUi from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import i18n from '@/lang';
-import '@/icons/components'
+import '@/icons/components';
 import SvgIcon from 'vue-svgicon';
 
 Vue.use(ElementUi, {
