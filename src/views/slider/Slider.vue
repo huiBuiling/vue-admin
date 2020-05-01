@@ -5,15 +5,14 @@
       Admin
     </div>
     <div class="ad-nav-con">
-      <!--              :default-active="$route.path"-->
+      <!--@open="handleOpen"
+      @close="handleClose"-->
       <el-menu
-              default-active="1"
+              :default-active="activeMenu"
               class="el-menu-vertical-demo"
               unique
               collapse-transition
               router
-              @open="handleOpen"
-              @close="handleClose"
               :collapse="isCollapse"
       >
         <SliderItem
@@ -28,9 +27,9 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { routes} from '@/router';
-import SliderItem from '@/components/slider/SliderItem.vue';
+import SliderItem from '@/views/slider/SliderItem.vue';
 @Component({
-  // name: 'Slider',
+  name: 'slider',
   components: {
     SliderItem,
   },
@@ -39,19 +38,26 @@ export default class Slider extends Vue {
   @Prop({ default: '200px' }) private navWidth!: string;
   @Prop({default: false}) private isCollapse!: boolean | undefined;
 
-  private menuActive: string = '1';
-
-  private handleOpen(key: string, keyPath: any) {
-    console.log(key, keyPath);
-  }
-
-  private handleClose(key: string, keyPath: any) {
-    console.log(key, keyPath);
-  }
+  // private handleOpen(key: string, keyPath: any) {
+  //   console.log(key, keyPath);
+  // }
+  //
+  // private handleClose(key: string, keyPath: any) {
+  //   console.log(key, keyPath);
+  // }
 
   get menuArr() {
     const menuList: any = routes;
     return menuList;
+  }
+
+  get activeMenu() {
+    const route = this.$route;
+    const { meta, path } = route;
+    if (meta.activeMenu) {
+      return meta.activeMenu;
+    }
+    return path;
   }
 }
 </script>

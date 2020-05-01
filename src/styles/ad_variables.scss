@@ -26,11 +26,20 @@ $conColor: #F2F2F2;
 $conFontColor: $color2;
 $conFont: $font14;
 
+// divAll
+@mixin divAll{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+
 // divCon
 @mixin divCon{
   width: 100%;
   height: 100%;
-  padding: 20px;
+  // padding: 20px;
 }
 
 

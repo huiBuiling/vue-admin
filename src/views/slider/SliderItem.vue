@@ -1,7 +1,7 @@
 <template>
     <!-- 侧边栏 -->
     <div class="ad-nav-menu">
-        <div v-for="(itemM, indexM) in menuArr">
+        <div v-for="(itemM, indexM) in menuArr" :key="indexM.path">
             <!--有子级菜单-->
             <!--:index="curPathFun(itemM.path)"-->
             <el-submenu

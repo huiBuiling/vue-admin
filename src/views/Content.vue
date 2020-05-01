@@ -6,7 +6,7 @@
         <i :class="iconClass" />
       </div>
     </div>
-    <div class="ad-con-con">
+    <div class="ad-con-all">
         <!-- 路由出口 -->
         <!-- 路由匹配到的组件将渲染在这里 -->
         <router-view />
@@ -24,7 +24,9 @@ export default class Content extends Vue {
   private iconClass: string = 'el-icon-s-fold';
 
   @Emit ('toggleMenu')
-  private toggleMenu(isCollapse: boolean) {}
+  private toggleMenu(isCollapse: boolean) {
+    console.log(isCollapse);
+  }
 
   // @Model('toggleSlider', { type: Boolean }) readonly isCollapse!: boolean;
   private toggleSlider() {

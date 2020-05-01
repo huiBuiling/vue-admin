@@ -1,5 +1,5 @@
 /* Global scss */
-@import 'layout.scss';
+@import './pro.scss';
 
 body {
     height: 100%;
@@ -12,11 +12,15 @@ body {
 }
   
   html {
+    width: 100%;
     height: 100%;
+    overflow: hidden;
   }
   
   #app {
+    width: 100%;
     height: 100%;
+    overflow: hidden;
   }
   
   *,

@@ -1,0 +1,157 @@
+@import './ad_variables.scss';
+@import './layout.scss';
+
+/* el */
+.el-menu{
+  background-color: $barColor !important;
+  border-right: none !important;
+  // el-submenu is-active is-opened
+  .el-submenu{
+    // color: $barFontColor;
+    // font-size: $barFont;
+    .el-submenu__title{
+      i, span{
+        color: $barFontColor;
+        font-size: $barFont;
+      }
+    }
+  }
+  .el-menu-item, .el-submenu__title{
+    color: $barFontColor;
+    font-size: $barFont;
+    height: 44px !important;
+    line-height: 44px !important;
+    i{
+      color: $color;
+    }
+    &:focus, &:hover{
+      background-color: $barLiBgColor;
+      border-right: 3px solid $barLiBorColor;
+    }
+    &.is-active{
+      background-color: $barLiBgColor;
+      border-right: 3px solid $barLiBorColor;
+    }
+  }
+}
+
+/* components */
+
+/* icon */
+.ad-icons{
+  .ad-icons-div{
+    background: $color;
+    @include divCon;
+    padding: 10px;
+    height: auto;
+    .ad-icons-item{
+      width: 12%;
+      min-width: 140px;
+      height: 145px;
+      border: 1px solid #ddd;
+      font-size: 30px;
+      float: left;
+      color: $color2;
+      .svg-icon {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          color: inherit;
+          vertical-align: middle;
+          fill: none;
+          stroke: currentColor;
+      }
+
+      .svg-fill {
+          fill: currentColor;
+          stroke: none;
+      }
+
+      .svg-up {
+          /* default */
+          transform: rotate(0deg);
+      }
+
+      .svg-right {
+          transform: rotate(90deg);
+      }
+
+      .svg-down {
+          transform: rotate(180deg);
+      }
+
+      .svg-left {
+          transform: rotate(-90deg);
+      }
+      .ad-icon-items-text{
+        margin-bottom: 0;
+        font-size: $font18;
+      }
+    }
+  }
+}
+
+/* chart */
+.ad-chart{
+  .ad-chart-line, .ad-chart-column, .ad-chart-pie{
+    background: $color;
+    @include divCon;
+  }
+  .ad-chart-complex{
+    @include divCon;
+    .ad-chart-complex-i{
+      width: 300px;
+      height: 110px;
+      background: $color;
+      padding: 20px 0;
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+/* editor */
+.ad-editor{
+  .ad-editor-mk, .ad-editor-json, .ad-editor-rich{
+    @include divCon;
+  }
+  .ad-editor-mk{
+    .markdown-body{
+      min-height: 300px !important;
+      height: 100%;
+    }
+  }
+  .ad-editor-json{
+    .CodeMirror{
+      height: 100%;
+      background: $color;
+      text-align: left;
+      .CodeMirror-gutter{
+        background: #3c444d;
+      }
+    }
+    .cm-s-rubyblue .CodeMirror-gutters{
+      border-color: $barLiBorColor !important;
+    }
+  }
+  .ad-editor-rich{
+    .quill-editor{
+      height: 100%;
+      background: $color;
+      .ql-toolbar.ql-snow{
+        border-width: 0 0 1px 0;
+      }
+      .ql-container{
+        height: calc(100% - 41px);
+        border: none !important;
+        .ql-editor{
+          color: $color2;
+          font-size: 15px;
+          line-height: 1.5;
+          font-family: Menlo, "Ubuntu Mono", Consolas, "Courier New", "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+        }
+      }
+    }
+  }
+}
