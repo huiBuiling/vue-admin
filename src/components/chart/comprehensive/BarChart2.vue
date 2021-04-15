@@ -20,7 +20,7 @@ export default class SmallColumnarChart extends Vue {
   private chart: any = {};
   private chartOption: any = {};
 
-  public mounted() {
+  private mounted() {
     const { isXAxis, xAxis, isYAxis, yAxis,
             chatColor, grid, tooltip, title,
             isSeries, seriesData, series, xAxisData } = this.chartData;

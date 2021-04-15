@@ -21,7 +21,7 @@ export default class PieChart extends Vue {
   private width: string = '100%';
   private height: string = '400px';
   private id: string = 'pie';
-  public mounted() {
+  private mounted() {
     this.initChart();
   }
 

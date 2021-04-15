@@ -77,6 +77,14 @@ export const routes: RouteConfig[] = [
       },
     ],
   },
+  {
+    path: '/screen',
+    name: 'screen',
+    meta: {
+      icon: 'el-icon-ice-cream-round',
+    },
+    component: () => import(/* webpackChunkName: "icon" */ '@/views/Screen.vue'),
+  },
 ];
 
 const router = new VueRouter({

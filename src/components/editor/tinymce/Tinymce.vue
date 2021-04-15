@@ -79,7 +79,7 @@ export default class TinymceEditor extends Vue {
     height: this.height,
   };
 
-  public mounted() {
+  private mounted() {
     const tinymceManager = (window as any).tinymce;
     tinymceManager.init(this.options);
   }

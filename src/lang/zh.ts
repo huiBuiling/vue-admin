@@ -12,6 +12,7 @@ const data = {
     richTextEditor: '富文本编辑器',
     jsonEditor: 'Json编辑器',
     icon: '图标',
+    screen: '大屏'
   },
   toolBar: {
     home: '首页',
