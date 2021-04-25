@@ -10,10 +10,13 @@
       </el-row>
     </div>
     <div class="screen-con">
-      <div class="screen-con-l">1</div>
-      <div class="screen-con-c">
-        <ScreenCenter />
+      <div class="screen-con-l">
+        <el-button @click="operaBtn('record')">操作按钮</el-button>
       </div>
+
+      <!-- 画布 -->
+      <ScreenCenter />
+
       <div class="screen-con-r">
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <template v-for="(tab, index) in tabList" >
@@ -30,6 +33,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import ScreenCenter from '@/components/screen/Index.vue'
+import { Button } from 'element-ui';
 @Component({
   name: 'screen',
   components: {
@@ -37,7 +41,13 @@ import ScreenCenter from '@/components/screen/Index.vue'
   }
 })
 export default class Screen extends Vue {
-  private tabList: object = [
+  private useComp: any[] = [
+    {
+      label: '按钮',
+      component: 'btn'
+    }
+  ]
+  private tabList: Array<{label: string, name: string, component: string }> = [
     {
       label: '属性',
       name: 'attri',

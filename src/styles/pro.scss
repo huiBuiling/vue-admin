@@ -168,23 +168,26 @@ $s-color: #fff;
     width: 100%;
     height: 66px;
     line-height: 66px;
-    background: $s-barColor;
     text-align: center;
   }
   .screen-con{
     display: flex;
-    height: 300px;
+    height: 100%;
     background: $s-bgColor;
     color: $s-color;
   }
   .screen-con-l, .screen-con-r{
     width: 200px;
     color: $s-color;
+    padding: 15px;
   }
   .screen-con-c{
     flex: 1;
-    border: 1px solid #252526;
-    border-width: 0 2px;
+    background: $s-barColor;
+    border: 1px solid $s-bgColor;
+    border-width: 2px 2px 0;
+    overflow: hidden;
+    position: relative;
   }
 
   .el-row{
