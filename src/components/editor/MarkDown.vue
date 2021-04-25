@@ -20,8 +20,8 @@ Vue.use(mavonEditor);
 @Component({
   name: 'markDown',
   components: {
-    mavonEditor,
-  },
+    mavonEditor
+  }
 })
 export default class MarkDown extends Vue {
   private content: string = '开始编辑...';

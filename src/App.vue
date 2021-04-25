@@ -9,8 +9,8 @@ import { Component, Vue } from 'vue-property-decorator';
 import Index from '@/views/Index.vue';
 @Component({
   components: {
-    Index,
-  },
+    Index
+  }
 })
 export default class App extends Vue {}
 </script>

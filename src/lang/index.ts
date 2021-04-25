@@ -15,12 +15,12 @@ Vue.use(VueI18n);
 const messages: any = {
   en: {
     ...en,
-    ...elEnLocale,
+    ...elEnLocale
   },
   zh: {
     ...zh,
-    ...elZhLocale,
-  },
+    ...elZhLocale
+  }
 };
 
 // 初始获取当前语言
@@ -31,7 +31,7 @@ const curLocale = () => {
 
 const i18n = new VueI18n({
    locale: curLocale(), // 定义默认语言为中文
-   messages,
+   messages
 });
 
 export default i18n;

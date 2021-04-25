@@ -10,8 +10,8 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/home/HelloWorld.vue';
 @Component({
   components: {
-    HelloWorld,
-  },
+    HelloWorld
+  }
 })
 export default class Home extends Vue {
   @Prop() private msg!: string;

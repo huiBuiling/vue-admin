@@ -15,7 +15,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import echarts from 'echarts';
 @Component({
-  name: 'columnarChart',
+  name: 'columnarChart'
 })
 export default class ColumnarChart extends Vue {
   private chart: any = {};
@@ -24,8 +24,8 @@ export default class ColumnarChart extends Vue {
     id: 'columnA',
     style: {
       width: '100%',
-      height: '100%',
-    },
+      height: '100%'
+    }
   };
   private xAxisData: any = [];
   private data1: any = [];
@@ -38,8 +38,8 @@ export default class ColumnarChart extends Vue {
           shadowBlur: 10,
           shadowOffsetX: 0,
           shadowOffsetY: 0,
-          shadowColor: 'rgba(0,0,0,0.5)',
-      },
+          shadowColor: 'rgba(0,0,0,0.5)'
+      }
   };
 
   private mounted() {
@@ -55,19 +55,19 @@ export default class ColumnarChart extends Vue {
         // backgroundColor: '#fff',
         legend: {
             data: ['bar', 'bar2', 'bar3', 'bar4'],
-            left: 10,
+            left: 10
         },
         brush: {
             toolbox: ['rect', 'polygon', 'lineX', 'lineY', 'keep', 'clear'],
-            xAxisIndex: 0,
+            xAxisIndex: 0
         },
         toolbox: {
             feature: {
                 magicType: {
-                    type: ['stack', 'tiled'],
+                    type: ['stack', 'tiled']
                 },
-                dataView: {},
-            },
+                dataView: {}
+            }
         },
         tooltip: {},
         xAxis: {
@@ -75,14 +75,14 @@ export default class ColumnarChart extends Vue {
             name: 'X Axis',
             axisLine: {onZero: true},
             splitLine: {show: false},
-            splitArea: {show: false},
+            splitArea: {show: false}
         },
         yAxis: {
             inverse: true,
-            splitArea: {show: false},
+            splitArea: {show: false}
         },
         grid: {
-            left: 100,
+            left: 100
         },
         visualMap: {
             type: 'continuous',
@@ -96,16 +96,16 @@ export default class ColumnarChart extends Vue {
             top: 60,
             left: 10,
             inRange: {
-                colorLightness: [0.4, 0.8],
+                colorLightness: [0.4, 0.8]
             },
             outOfRange: {
-                color: '#bbb',
+                color: '#bbb'
             },
             controller: {
                 inRange: {
-                    color: '#2f4554',
-                },
-            },
+                    color: '#2f4554'
+                }
+            }
         },
         series: [
             {
@@ -113,30 +113,30 @@ export default class ColumnarChart extends Vue {
                 type: 'bar',
                 stack: 'one',
                 emphasis: this.emphasisStyle,
-                data: this.data1,
+                data: this.data1
             },
             {
                 name: 'bar2',
                 type: 'bar',
                 stack: 'one',
                 emphasis: this.emphasisStyle,
-                data: this.data2,
+                data: this.data2
             },
             {
                 name: 'bar3',
                 type: 'bar',
                 stack: 'two',
                 emphasis: this.emphasisStyle,
-                data: this.data3,
+                data: this.data3
             },
             {
                 name: 'bar4',
                 type: 'bar',
                 stack: 'two',
                 emphasis: this.emphasisStyle,
-                data: this.data4,
-            },
-        ],
+                data: this.data4
+            }
+        ]
     };
     this.initChart();
   }

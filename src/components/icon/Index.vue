@@ -39,7 +39,7 @@ import defaultIcons from './svg-icons';
 import elementIcons from './element-icons';
 
 @Component({
-  name: 'listIndex',
+  name: 'listIndex'
 })
 export default class ListIndex extends Vue {
   @Prop() private name!: string;

@@ -157,6 +157,9 @@
 }
 
 /* screen */
+$s-bgColor:#1E1E1E;
+$s-barColor:#3C3C3C;
+$s-color: #fff;
 .ad-screen{
   width: 100%;
   height: 100%;
@@ -165,14 +168,32 @@
     width: 100%;
     height: 66px;
     line-height: 66px;
+    background: $s-barColor;
+    text-align: center;
   }
   .screen-con{
     display: flex;
+    height: 300px;
+    background: $s-bgColor;
+    color: $s-color;
   }
   .screen-con-l, .screen-con-r{
     width: 200px;
+    color: $s-color;
   }
   .screen-con-c{
     flex: 1;
+    border: 1px solid #252526;
+    border-width: 0 2px;
+  }
+
+  .el-row{
+    text-align: left;
+    margin-left: 14px;
+  }
+  .el-button{
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
   }
 }
