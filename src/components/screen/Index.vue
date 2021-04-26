@@ -12,12 +12,12 @@ import Grid from './Grid.vue'
  * 画布-center
  */
 @Component({
-  name: 'screen',
+  name: 'screenCon',
   components: {
     Grid
   }
 })
-export default class Screen extends Vue {}
+export default class ScreenCon extends Vue {}
 </script>
 
 <style lang="scss">
@@ -25,4 +25,4 @@ export default class Screen extends Vue {}
     // width: 300px;
     // height: 300px;
   }
-</style>>
+</style>
