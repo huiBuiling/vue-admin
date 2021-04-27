@@ -96,6 +96,7 @@
   .ad-chart-line, .ad-chart-column, .ad-chart-pie{
     background: $color;
     @include divCon;
+    padding: 50px 20px;
   }
   .ad-chart-complex{
     @include divCon;
