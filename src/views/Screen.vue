@@ -131,6 +131,8 @@ export default class Screen extends Vue {
   private onDragend(e: any) {
     e.target.style.opacity = 1
     e.target.style.background = '#fff'
+    e.target.style.top = e.offsetY
+    e.target.style.left = e.offsetX
   }
 
   /**
