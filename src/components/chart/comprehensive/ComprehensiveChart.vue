@@ -27,8 +27,8 @@ import ColumnarChart from '@/components/chart/comprehensive/BarChart2.vue';
   name: 'comprehensiveChart',
   components: {
     LineChart,
-    ColumnarChart,
-  },
+    ColumnarChart
+  }
 })
 export default class ComprehensiveChart extends Vue {
   // LineChart
@@ -37,7 +37,7 @@ export default class ComprehensiveChart extends Vue {
       chatColor: '137,75,222',
       style: {
         width: '100%',
-        height: '70px',
+        height: '70px'
       },
       xAxis: {show: false},
       yAxis: {show: false},
@@ -45,7 +45,7 @@ export default class ComprehensiveChart extends Vue {
           top: '0',
           bottom: '2%',
           left: '0',
-          right: '2%',
+          right: '2%'
       },
       xAxisData: ['绩效奖金', '月入2万', '年终分红', '定期旅游', '周末双休',
         '零食丰富', '每周羽毛球', '周末双休', '零食丰富', '每周羽毛球'],
@@ -53,9 +53,9 @@ export default class ComprehensiveChart extends Vue {
       series: {
           showSymbol: false,
           areaStyle: {
-              color: 'rgb(137,75,222)',  // 线条下面积颜色
-          },
-      },
+              color: 'rgb(137,75,222)'  // 线条下面积颜色
+          }
+      }
   };
 
   // columnChart
@@ -63,7 +63,7 @@ export default class ComprehensiveChart extends Vue {
       id: 'columnA',
       style: {
         width: '100%',
-        height: '70px',
+        height: '70px'
       },
       xAxis: {show:  false},
       yAxis: {show: false},
@@ -71,13 +71,13 @@ export default class ComprehensiveChart extends Vue {
           top: '9',
           bottom: '2%',
           left: '0',
-          right: '2%',
+          right: '2%'
       },
       xAxisData: ['绩效奖金', '月入2万', '年终分红', '定期旅游', '周末双休', '零食丰富', '每周羽毛球', '周末双休', '零食丰富', '每周羽毛球'],
       seriesData: [0, 80, 40, 178, 40, 123, 170, 40, 123, 0],
       series: {
-          showSymbol: false,
-      },
+          showSymbol: false
+      }
   };
 }
 </script>

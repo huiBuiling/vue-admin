@@ -8,7 +8,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
-  name: 'editor',
+  name: 'editor'
 })
 export default class EditorView extends Vue {}
 </script>

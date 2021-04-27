@@ -15,8 +15,8 @@ import TinymceEditor from './Tinymce.vue';
 @Component({
   name: 'richTextEditor',
   components: {
-    TinymceEditor,
-  },
+    TinymceEditor
+  }
 })
 export default class RichTextEditor extends Vue {
   private content: string = `<h1 style="text-align: center;">Welcome to the TinyMCE demo!</h1>`;

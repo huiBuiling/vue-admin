@@ -22,8 +22,8 @@ import Slider from '@/views/slider/Slider.vue';
 @Component({
    components: {
      Slider,
-     Content,
-   },
+     Content
+   }
 })
 export default class Index extends Vue {
   private isCollapse: boolean = false;

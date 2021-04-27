@@ -49,8 +49,8 @@ import { plugins, toolbar } from './config';
 @Component({
   name: 'TinymceEditor',
   components: {
-    Editor,
-  },
+    Editor
+  }
 })
 export default class TinymceEditor extends Vue {
   @Prop({ required: true }) private value!: string;
@@ -76,10 +76,10 @@ export default class TinymceEditor extends Vue {
     // plugins: plugins, // 插件
     toolbar: this.toolbar.length > 0 ? this.toolbar : toolbar, // 工具栏
     menubar: true, // 顶部菜单栏显示
-    height: this.height,
+    height: this.height
   };
 
-  public mounted() {
+  private mounted() {
     const tinymceManager = (window as any).tinymce;
     tinymceManager.init(this.options);
   }

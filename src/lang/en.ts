@@ -11,23 +11,23 @@ const data = {
     markDown: 'MarkDown',
     richTextEditor: 'RichTextEditor',
     jsonEditor: 'JsonEditor',
-    icon: 'Icon',
+    icon: 'Icon'
   },
   toolBar: {
     home: 'Home',
     logOut: 'LogOut',
-    github: 'github',
+    github: 'github'
   },
   login: {
     register: 'Register',
-    logIn: 'LogIn',
+    logIn: 'LogIn'
   },
   setting: {
     title: 'Page style setting',
     showTags: 'Show Tags',
     theme: 'Theme Color',
-    fixedH: 'Fixed Header',
-  },
+    fixedH: 'Fixed Header'
+  }
 };
 
 export default data;

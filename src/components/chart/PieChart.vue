@@ -13,7 +13,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import echarts from 'echarts';
 
 @Component({
-  name: 'pieChart',
+  name: 'pieChart'
 })
 export default class PieChart extends Vue {
   private msg: string = '饼状图';
@@ -21,7 +21,7 @@ export default class PieChart extends Vue {
   private width: string = '100%';
   private height: string = '400px';
   private id: string = 'pie';
-  public mounted() {
+  private mounted() {
     this.initChart();
   }
 
@@ -30,17 +30,17 @@ export default class PieChart extends Vue {
     this.chart.setOption({
         title : {
             text: '南丁格尔玫瑰图',
-            x: 'center',
+            x: 'center'
         },
         tooltip : {
             trigger: 'item',
-            formatter: '{a} <br/>{b} : {c} ({d}%)',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
         },
         legend: {
             x : 'center',
             y : 'bottom',
             data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5',
-              'rose6', 'rose7', 'rose8'],
+              'rose6', 'rose7', 'rose8']
         },
         toolbox: {
             show : true,
@@ -49,11 +49,11 @@ export default class PieChart extends Vue {
                 dataView : {show: true, readOnly: false},
                 magicType : {
                     show: true,
-                    type: ['pie', 'funnel'],
+                    type: ['pie', 'funnel']
                 },
                 restore : {show: true},
-                saveAsImage : {show: true},
-            },
+                saveAsImage : {show: true}
+            }
         },
         calculable : true,
         series : [
@@ -65,19 +65,19 @@ export default class PieChart extends Vue {
                 roseType: 'radius',
                 label: {
                     normal: {
-                        show: false,
+                        show: false
                     },
                     emphasis: {
-                        show: true,
-                    },
+                        show: true
+                    }
                 },
                 labelLine: {
                     normal: {
-                        show: false,
+                        show: false
                     },
                     emphasis: {
-                        show: true,
-                    },
+                        show: true
+                    }
                 },
                 data: [
                     {value: 10, name: 'rose1'},
@@ -87,8 +87,8 @@ export default class PieChart extends Vue {
                     {value: 20, name: 'rose5'},
                     {value: 35, name: 'rose6'},
                     {value: 30, name: 'rose7'},
-                    {value: 40, name: 'rose8'},
-                ],
+                    {value: 40, name: 'rose8'}
+                ]
             },
             {
                 name: '面积模式',
@@ -104,10 +104,10 @@ export default class PieChart extends Vue {
                     {value: 20, name: 'rose5'},
                     {value: 35, name: 'rose6'},
                     {value: 30, name: 'rose7'},
-                    {value: 40, name: 'rose8'},
-                ],
-            },
-        ],
+                    {value: 40, name: 'rose8'}
+                ]
+            }
+        ]
     });
   }
 

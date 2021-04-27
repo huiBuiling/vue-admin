@@ -13,14 +13,14 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import echarts from 'echarts';
 @Component({
-  name: 'smallColumnarChart',
+  name: 'smallColumnarChart'
 })
 export default class SmallColumnarChart extends Vue {
   @Prop() private chartData: any;
   private chart: any = {};
   private chartOption: any = {};
 
-  public mounted() {
+  private mounted() {
     const { isXAxis, xAxis, isYAxis, yAxis,
             chatColor, grid, tooltip, title,
             isSeries, seriesData, series, xAxisData } = this.chartData;
@@ -32,16 +32,16 @@ export default class SmallColumnarChart extends Vue {
               top: '9%',
               bottom: '19%',
               left: '6%',
-              right: '4%',
+              right: '4%'
           },
           // 提示
           tooltip: tooltip !== undefined ? tooltip : {
               trigger: 'axis',  // 触发类型
               label: {
-                  show: true,
+                  show: true
               },
               axisPointer: {
-                  type: 'none',  // 指示器类型 line shadow
+                  type: 'none'  // 指示器类型 line shadow
               },
               backgroundColor: 'rgba(255,255,255,.9)',  // 浮层背景色
               borderWidth: 1,
@@ -52,7 +52,7 @@ export default class SmallColumnarChart extends Vue {
               textStyle: {
                   // 文字样式
                   color: 'rgba(87,87,87)',
-                  width: 200,
+                  width: 200
               },
               formatter: (data: any) => {
                   let html = '';
@@ -60,46 +60,46 @@ export default class SmallColumnarChart extends Vue {
                   html += 'em{width: 10px;height: 10px;display: inline-block;vertical-align: -5px;margin-right: 8px;border-radius: 50%;}</style>';
                   html += '<p><em>&nbsp;</em>' + data[0].name + ' : ' + data[0].data + '</p>';
                   return html;
-              },
+              }
           },
           xAxis: isXAxis ? xAxis : {
               boundaryGap: true, // 默认，坐标轴留白策略
               axisLine: {
-                  show: false,
+                  show: false
               },
               splitLine: {
-                  show: false,
+                  show: false
               },
               axisTick: {
                   show: false,
-                  alignWithLabel: true,
+                  alignWithLabel: true
               },
               data: xAxisData && xAxisData.length > 0 ? xAxisData : ['aa', 'bb', 'cc'],
-              ...xAxis,
+              ...xAxis
           },
           yAxis: isYAxis ? yAxis : {
               axisLine: {
-                  show: false,
+                  show: false
               },
               splitLine: {
                   show: true,
                   lineStyle: {
                       type: 'dashed',  // 背景线条类型
                       color: chatColor !== undefined ? `rgba(${chatColor},.2)`
-                              : 'rgba(33,148,246,.2)',   // 背景线条颜色
-                  },
+                              : 'rgba(33,148,246,.2)'   // 背景线条颜色
+                  }
               },
               axisTick: {
-                  show: false,
+                  show: false
               },
               splitArea: {
                   show: true,
                   areaStyle: {
                       color: chatColor !== undefined ? `rgb(${chatColor})`
-                              : 'rgb(245,250,254)', // 背景颜色
-                  },
+                              : 'rgb(245,250,254)' // 背景颜色
+                  }
               },
-              ...yAxis,
+              ...yAxis
           },
           // 数据
           series: isSeries ? series : [{
@@ -110,7 +110,7 @@ export default class SmallColumnarChart extends Vue {
               symbolSize: 4,
               areaStyle: {
                   color: chatColor !== undefined ? `rgba(${chatColor},.4)`
-                          : 'rgba(33,148,246,.4)',  // 线条下面积颜色,不设置默认为线条颜色
+                          : 'rgba(33,148,246,.4)'  // 线条下面积颜色,不设置默认为线条颜色
               },
               lineStyle: {
                   color: chatColor !== undefined ? `rgb(${chatColor})`
@@ -119,18 +119,18 @@ export default class SmallColumnarChart extends Vue {
                   shadowColor: chatColor !== undefined ? `rgba(${chatColor},.9)`
                           : 'rgba(33,148,246,.9)', // 外层面积阴影背景色
                   shadowOffsetX: 1,
-                  shadowOffsetY: 1,
+                  shadowOffsetY: 1
               },
               itemStyle: {
                   color: chatColor !== undefined ? `rgb(${chatColor})`
                           : 'rgb(33,148,246)',  // 圆点颜色
                   borderWidth: 1,
-                  borderColor: '#FFF',
+                  borderColor: '#FFF'
               },
               data: seriesData && seriesData.length > 0 ? seriesData
                       : ['300', '400', '500'],
-              ...series,
-          }],
+              ...series
+          }]
       };
     this.initChart();
   }

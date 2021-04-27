@@ -12,11 +12,15 @@
   </div>
 </template>
 
-<script>
-
-export default {
-  name: 'app',
-}
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import Index from '@/views/Index.vue';
+@Component({
+  components: {
+    Index
+  }
+})
+export default class App extends Vue {}
 </script>
 
 <style>
