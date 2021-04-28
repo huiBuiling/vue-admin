@@ -62,7 +62,7 @@ export default class Screen extends Vue {
       component: 'btn',
       text: 'btn',
       style: {
-        top: '10px',
+        top: '100px',
         left: '50px'
       }
     }
@@ -155,6 +155,34 @@ export default class Screen extends Vue {
     e.preventDefault()
     // 设置行为为复制，保留原始组件
     e.dataTransfer.dropEffect = 'copy'
+  }
+
+  /**
+   * 鼠标按下
+   */
+  private onMouseDown(e: any) {
+    console.log('onMouseDown', e)
+  }
+
+  /**
+   * 鼠标松开
+   */
+  private onMouseUp(e: any) {
+    console.log('onMouseUp', e)
+  }
+
+  /**
+   * 鼠标移动
+   */
+  private onMouseMove(e: any) {
+    console.log('onMouseMove', e)
+    this.screenComp = [{
+      ...this.screenComp[0],
+      style: {
+        top: e.offsetY + 'px',
+        left: e.offsetX + 'px'
+      }
+    }]
   }
 }
 </script>
