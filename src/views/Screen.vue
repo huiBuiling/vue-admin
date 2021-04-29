@@ -27,7 +27,10 @@
         @dragover="onDragover"
       >
         <!-- 画布 -->
-        <ScreenCenter :screenComp="screenComp"  />
+        <ScreenCenter 
+          :screenComp="screenComp" 
+          @changeComp="changeComp"
+        />
       </div>
 
       <!-- <div class="screen-con-r">
@@ -61,10 +64,20 @@ export default class Screen extends Vue {
       label: 'btn',
       component: 'btn',
       text: 'btn',
-      // style: {
-      //   top: '0',
-      //   left: '0'
-      // }
+      style: {
+        top: '0',
+        left: '0'
+      }
+    },
+    {
+      id: 2,
+      label: 'image',
+      component: 'image',
+      text: 'image',
+      style: {
+        top: '100px',
+        left: '100px'
+      }
     }
   ]
   private tabList: Array<{label: string, name: string, component: string }> = [
@@ -157,32 +170,17 @@ export default class Screen extends Vue {
     e.dataTransfer.dropEffect = 'copy'
   }
 
-  /**
-   * 鼠标按下
-   */
-  private onMouseDown(e: any) {
-    console.log('onMouseDown', e)
-  }
-
-  /**
-   * 鼠标松开
-   */
-  private onMouseUp(e: any) {
-    console.log('onMouseUp', e)
-  }
-
-  /**
-   * 鼠标移动
-   */
-  private onMouseMove(e: any) {
-    console.log('onMouseMove', e)
-    this.screenComp = [{
-      ...this.screenComp[0],
-      style: {
-        top: e.offsetY + 'px',
-        left: e.offsetX + 'px'
+  private changeComp(id: string, data: any) {
+    const curIndex = this.screenComp.findIndex((item) => item.id === +id)
+    if (curIndex >= 0) {
+      let curComp: any = this.screenComp![curIndex]
+      curComp = {
+        ...curComp,
+        style: data
       }
-    }]
+      this.$set(this.screenComp, curIndex, curComp)
+    }
+    
   }
 }
 </script>

@@ -7,11 +7,11 @@
     <!-- :style="{...item.style, left: left + 'px', top: top + 'px'}" -->
     <div 
       class="ads-comp"
-      v-for="(item, index) in screenComp" 
-      :key="item.id + '-' + index"
-      :style="{...item.style, left: left + 'px', top: top + 'px'}"
+      v-for="item in screenComp" 
+      :key="item.id"
+      :style="item.style"
       @mousedown="onMouseDown"
-      id="btn"
+      :id="item.id"
     >
       <el-button 
         v-if="item.label === 'btn'"
@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
 import Grid from './Grid.vue'
 /**
  * 画布-center
@@ -39,18 +39,21 @@ import Grid from './Grid.vue'
 })
 export default class ScreenCon extends Vue {
   @Prop() private screenComp!: any[];
-  // @Emit ('onDragover')
-  // private onDragover(e: any) {
-  //   console.log('e', e);
-  // }
-  // public editor:any = document.getElementById('editor') as HTMLElement;
-  private moveBtn: any
   private flags: boolean = false
   private left: number = 0
   private top: number = 0
 
-  private created() {
+  @Emit ('changeComp')
+  private changeComp(id: string, data: any) {
+    console.log('changeComp', id, data);
+  }
+
+  private mounted() {
     console.log('screenComp', this.screenComp)
+  }
+
+  private updated() {
+    console.log('screenComp2', this.screenComp)
   }
 
   /**
@@ -58,8 +61,9 @@ export default class ScreenCon extends Vue {
    */
   private onMouseDown(e: any) {
     this.flags = true
+    const curid = e.currentTarget.id
     const editorDom = document.getElementById('editor') as HTMLElement;
-    const btnDom = document.getElementById('btn') as HTMLElement;
+    const btnDom = document.getElementById(curid) as HTMLElement;
     const editors = editorDom.getBoundingClientRect() as DOMRect
 
     // 鼠标按下 获取鼠标距离页面左侧距离
@@ -93,11 +97,11 @@ export default class ScreenCon extends Vue {
       lefty = lefty <= 0 ? 0 : lefty
       // 3.右侧边界值: editor宽 - 元素宽
       // const rightx = editors.width - btnDom.offsetWidth
-      // const rightx = editorDom.clientWidth - btnDom.offsetWidth
+      const rightx = editorDom.clientWidth - btnDom.offsetWidth
       console.log('editors', editors.width, btnDom.offsetWidth, leftx)
-      // if (leftx >= editorDom.clientWidth) {
-      //   leftx = rightx
-      // }
+      if (leftx >= editorDom.clientWidth) {
+        leftx = rightx
+      }
 
       // 4.下侧边界值: editor高 - 元素高
       // const righty = editors.y - btnDom.offsetHeight;
@@ -108,9 +112,13 @@ export default class ScreenCon extends Vue {
       // 鼠标移动过程中 获取鼠标距离页面距离 - 鼠标距离元素的距离 =元素的left top值
       // btnDom.style.left = leftx + 'px';
       // btnDom.style.top = lefty + 'px';
-      this.left = leftx
-      this.top = lefty
+      // this.left = leftx
+      // this.top = lefty
       // console.log('btndom', leftx, lefty, movex, movey)
+      this.changeComp(curid, {
+        left: leftx + 'px',
+        top: lefty + 'px'
+      })
     }
 
     /**
