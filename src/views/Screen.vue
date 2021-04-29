@@ -61,10 +61,10 @@ export default class Screen extends Vue {
       label: 'btn',
       component: 'btn',
       text: 'btn',
-      style: {
-        top: '100px',
-        left: '50px'
-      }
+      // style: {
+      //   top: '0',
+      //   left: '0'
+      // }
     }
   ]
   private tabList: Array<{label: string, name: string, component: string }> = [

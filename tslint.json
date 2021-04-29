@@ -26,6 +26,7 @@
         "typeLiterals": "ignore"
       }
     }],
-    "semicolon":[false, "aways"]
+    "semicolon":[false, "aways"],
+    "no-trailing-whitespace": false
   }
 }
