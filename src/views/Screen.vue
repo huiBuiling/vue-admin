@@ -33,15 +33,7 @@
         />
       </div>
 
-      <!-- <div class="screen-con-r">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-          <template v-for="(tab, index) in tabList" >
-            <el-tab-pane :label="tab.label" :name="tab.name" :key="index">
-              <ListIndex :name="tab.component" />
-            </el-tab-pane>
-          </template>
-        </el-tabs>
-      </div> -->
+      <TabAttr />
     </div>
   </div>
 </template>
@@ -49,11 +41,13 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import ScreenCenter from '@/components/screen/Index.vue'
+import TabAttr from '@/components/screen/TabAttr.vue'
 import { Button } from 'element-ui';
 @Component({
   name: 'screen',
   components: {
-    ScreenCenter
+    ScreenCenter,
+    TabAttr
   }
 })
 export default class Screen extends Vue {
@@ -69,41 +63,49 @@ export default class Screen extends Vue {
         left: '0'
       }
     },
+    // {
+    //   id: 2,
+    //   label: 'image',
+    //   component: 'image',
+    //   text: 'image',
+    //   style: {
+    //     top: '100px',
+    //     left: '100px'
+    //   }
+    // },
     {
-      id: 2,
-      label: 'image',
-      component: 'image',
-      text: 'image',
+      id: 3,
+      label: 'textarea',
+      component: 'textarea',
+      text: 'textarea',
+      style: {
+        top: '0',
+        left: '120px'
+      }
+    },
+    {
+      id: 4,
+      label: 'input',
+      component: 'input',
+      text: 'input',
       style: {
         top: '100px',
-        left: '100px'
+        left: '0'
+      }
+    },
+    {
+      id: 5,
+      label: 'rect',
+      component: 'rect',
+      text: 'rect',
+      style: {
+        top: '200px',
+        left: '0',
+        width: '200px',
+        height: '100px'
       }
     }
   ]
-  private tabList: Array<{label: string, name: string, component: string }> = [
-    {
-      label: '属性',
-      name: 'attri',
-      component: 'default'
-    },
-    {
-      label: '动画',
-      name: 'anim',
-      component: 'element'
-    },
-    {
-      label: '事件',
-      name: 'events',
-      component: 'element'
-    }
-  ];
-  // 右侧栏，选中tab
-  private activeName: string = 'attri';
-
-  // tab 切换事件
-  private handleClick(tab: string, event: any) {
-    console.log(tab);
-  }
 
   /**
    * 顶部操作
@@ -177,7 +179,7 @@ export default class Screen extends Vue {
       let curComp: any = this.screenComp![curIndex]
       curComp = {
         ...curComp,
-        style: data
+        style: {...curComp.style, ...data}
       }
       this.$set(this.screenComp, curIndex, curComp)
     }

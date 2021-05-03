@@ -7,41 +7,85 @@
     <!-- :style="{...item.style, left: left + 'px', top: top + 'px'}" -->
     <div 
       class="ads-comp"
-      v-for="item in screenComp" 
+      v-for="(item) in screenComp" 
       :key="item.id"
       :style="item.style"
       @mousedown="onMouseDown"
       :id="item.id"
     >
+      <!-- 按钮 -->
       <el-button 
         v-if="item.label === 'btn'"
       >操作按钮{{item.text}}</el-button>
+
+      <!-- 图片 -->
       <img 
         style="width:80px; height: 100px"
         src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2620306848,1106594030&fm=26&gp=0.jpg" 
         v-if="item.label === 'image'"
       />
+
+      <!-- 区域框 -->
+      <el-input 
+        v-if="item.label === 'textarea'" 
+        type="textarea" 
+        v-model="item.label"
+      />
+
+      <!-- 输入框 -->
+      <el-input 
+        v-if="item.label === 'input'" 
+        v-model="item.label"
+      />
+
+      <!-- 矩形 -->
+      <div v-if="item.label === 'rect'" class="rect" >{{item.label}}</div>
     </div>
+
+    <!-- 组件框 -->
+    <!-- <Shape
+      :defaultStyle="item.style"
+      :style="getShapeStyle(item.style)"
+      :class="{ lock: item.isLock }"
+    /> -->
+
+    <!-- 选中区域 -->
+    <!-- <Area :start="start" :width="width" :height="height" v-show="isShowArea" /> -->
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
 import Grid from './Grid.vue'
+import Shape from './Area.vue'
+import Area from './Area.vue'
 /**
  * 画布-center
  */
 @Component({
   name: 'screenCon',
   components: {
-    Grid
+    Grid,
+    Shape,
+    Area
   }
 })
 export default class ScreenCon extends Vue {
   @Prop() private screenComp!: any[];
   private flags: boolean = false
-  private left: number = 0
-  private top: number = 0
+  // private left: number = 0
+  // private top: number = 0
+  private isShowArea = true
+
+  private width: number = 100
+  private height: number = 100
+  private start: {
+    x: number,
+    y: number
+  } = {
+    x: 0,
+    y: 0
+  }
 
   @Emit ('changeComp')
   private changeComp(id: string, data: any) {
@@ -54,6 +98,19 @@ export default class ScreenCon extends Vue {
 
   private updated() {
     console.log('screenComp2', this.screenComp)
+  }
+
+  private getShapeStyle(style: any) {
+    const result: any = {};
+    ['width', 'height', 'top', 'left', 'rotate'].forEach((attr: any) => {
+      if (attr !== 'rotate') {
+          result[attr] = style[attr] + 'px'
+      } else {
+          result.transform = 'rotate(' + style[attr] + 'deg)'
+      }
+    })
+
+    return result
   }
 
   /**
@@ -127,7 +184,7 @@ export default class ScreenCon extends Vue {
     const up = (ev: any) => {
       document.removeEventListener('mousemove', move)
       document.removeEventListener('mouseup', up)
-      return false
+      // return false
     }
     
     // 阻止页面的滑动默认事件
@@ -189,5 +246,12 @@ export default class ScreenCon extends Vue {
   }
   .ads-comp{
     position: absolute;
+  }
+  .rect{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #fff;
+    border-radius: 2px;
+    padding: 5px 10px;
   }
 </style>
