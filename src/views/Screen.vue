@@ -163,6 +163,7 @@ export default class Screen extends Vue {
   /**
    * 浏览器默认不允许拖延元素，因此需要先阻止默认设置
    */
+  
   private onDragover(e: any) {
     // console.log('onDragover', e)
     e.preventDefault()
