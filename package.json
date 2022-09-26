@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "svg": "vsvg -s ./src/icons/svg -t ./src/icons/components --ext ts --es6"
@@ -35,7 +35,7 @@
     "@vue/cli-plugin-vuex": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
     "babel-plugin-component": "^1.1.1",
-    "node-sass": "^4.14.1",
+    "sass": "^1.55.0",
     "sass-loader": "^8.0.0",
     "script-loader": "^0.7.2",
     "typescript": "~3.5.3",

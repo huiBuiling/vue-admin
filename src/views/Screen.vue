@@ -10,27 +10,14 @@
       </el-row>
     </div>
     <div class="screen-con">
-      <div class="screen-con-l" @dragstart="onDragstart" >
+      <div class="screen-con-l" @dragstart="onDragstart">
         <el-button draggable id="btn">操作按钮</el-button>
-        <img
-          class=""
-          style="width:170px; height: 200px"
-          id="image"
-          src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2620306848,1106594030&fm=26&gp=0.jpg" 
-        />
+        <!-- <img draggable class="" style="width:170px;" id="image" src="../assets/screen2.jpeg" /> -->
       </div>
 
-      
-      <div class="screen-con-c"  
-        @drop="onDrop"
-        @dragend="onDragend" 
-        @dragover="onDragover"
-      >
+      <div class="screen-con-c" @drop="onDrop" @dragend="onDragend" @dragover="onDragover">
         <!-- 画布 -->
-        <ScreenCenter 
-          :screenComp="screenComp" 
-          @changeComp="changeComp"
-        />
+        <ScreenCenter :screenComp="screenComp" @changeComp="changeComp" />
       </div>
 
       <TabAttr />
@@ -40,15 +27,15 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import ScreenCenter from '@/components/screen/Index.vue'
-import TabAttr from '@/components/screen/TabAttr.vue'
+import ScreenCenter from '@/components/screen/Index.vue';
+import TabAttr from '@/components/screen/TabAttr.vue';
 import { Button } from 'element-ui';
 @Component({
   name: 'screen',
   components: {
     ScreenCenter,
-    TabAttr
-  }
+    TabAttr,
+  },
 })
 export default class Screen extends Vue {
   // 画布组件
@@ -60,8 +47,8 @@ export default class Screen extends Vue {
       text: 'btn',
       style: {
         top: '0',
-        left: '0'
-      }
+        left: '0',
+      },
     },
     // {
     //   id: 2,
@@ -80,8 +67,8 @@ export default class Screen extends Vue {
       text: 'textarea',
       style: {
         top: '0',
-        left: '120px'
-      }
+        left: '120px',
+      },
     },
     {
       id: 4,
@@ -90,8 +77,8 @@ export default class Screen extends Vue {
       text: 'input',
       style: {
         top: '100px',
-        left: '0'
-      }
+        left: '0',
+      },
     },
     {
       id: 5,
@@ -102,10 +89,10 @@ export default class Screen extends Vue {
         top: '200px',
         left: '0',
         width: '200px',
-        height: '100px'
-      }
-    }
-  ]
+        height: '100px',
+      },
+    },
+  ];
 
   /**
    * 顶部操作
@@ -116,7 +103,7 @@ export default class Screen extends Vue {
    * clear: 清空画布
    */
   private operaBtn(type: string) {
-    console.log('type', type)
+    console.log('type', type);
   }
 
   /**
@@ -136,20 +123,23 @@ export default class Screen extends Vue {
    * 通过e.dataTransfer 获取存储的拖拽元素id, 并添加到画布中
    */
   private onDrop(e: any) {
-    e.preventDefault()
-    e.stopPropagation()
+    e.preventDefault();
+    e.stopPropagation();
     const id = e.dataTransfer.getData('id');
-    console.log('id', id)
-    this.screenComp = [...this.screenComp, {
-      id,
-      label: id,
-      component: id,
-      text: id,
-      style: {
-        top: e.offsetY + 'px',
-        left: e.offsetX + 'px'
-      }
-    }]
+    console.log('id', id);
+    this.screenComp = [
+      ...this.screenComp,
+      {
+        id,
+        label: id,
+        component: id,
+        text: id,
+        style: {
+          top: e.offsetY + 'px',
+          left: e.offsetX + 'px',
+        },
+      },
+    ];
   }
 
   /**
@@ -165,29 +155,26 @@ export default class Screen extends Vue {
   /**
    * 浏览器默认不允许拖延元素，因此需要先阻止默认设置
    */
-  
+
   private onDragover(e: any) {
     // console.log('onDragover', e)
-    e.preventDefault()
+    e.preventDefault();
     // 设置行为为复制，保留原始组件
-    e.dataTransfer.dropEffect = 'copy'
+    e.dataTransfer.dropEffect = 'copy';
   }
 
   private changeComp(id: string, data: any) {
-    const curIndex = this.screenComp.findIndex((item) => item.id === +id)
+    const curIndex = this.screenComp.findIndex((item) => item.id === +id);
     if (curIndex >= 0) {
-      let curComp: any = this.screenComp![curIndex]
+      let curComp: any = this.screenComp![curIndex];
       curComp = {
         ...curComp,
-        style: {...curComp.style, ...data}
-      }
-      this.$set(this.screenComp, curIndex, curComp)
+        style: { ...curComp.style, ...data },
+      };
+      this.$set(this.screenComp, curIndex, curComp);
     }
-    
   }
 }
 </script>
 
-<style lang="scss">
-  
-</style>>
+<style lang="scss"></style>>
