@@ -15,11 +15,14 @@
         <!-- <img draggable class="" style="width:170px;" id="image" src="../assets/screen2.jpeg" /> -->
       </div>
 
-      <div class="screen-con-c" @drop="onDrop" @dragend="onDragend" @dragover="onDragover">
+      <!-- 此方法均是处理给左侧组件拖曳到右侧内容块中 -->
+      <!-- @drop="onDrop" @dragend="onDragend" @dragover="onDragover" -->
+      <div class="screen-con-c">
         <!-- 画布 -->
         <ScreenCenter :screenComp="screenComp" @changeComp="changeComp" />
       </div>
 
+      <!-- 属性，动画，事件 -->
       <TabAttr />
     </div>
   </div>
@@ -39,7 +42,7 @@ import { Button } from 'element-ui';
 })
 export default class Screen extends Vue {
   // 画布组件
-  private screenComp: any[] = [
+  public screenComp: any[] = [
     {
       id: 1,
       label: 'btn',
@@ -102,7 +105,7 @@ export default class Screen extends Vue {
    * save: 保存
    * clear: 清空画布
    */
-  private operaBtn(type: string) {
+  protected operaBtn(type: string) {
     console.log('type', type);
   }
 
@@ -112,7 +115,7 @@ export default class Screen extends Vue {
    * 在ondrop时就可以获取当前id，并选中元素添加拖拽元素
    * e.dataTransfer
    */
-  private onDragstart(e: any) {
+  protected onDragstart(e: any) {
     // e.target.style.opacity = 0.5
     // e.target.style.background = '#000'
     e.dataTransfer.setData('id', e.target.id);
@@ -155,7 +158,6 @@ export default class Screen extends Vue {
   /**
    * 浏览器默认不允许拖延元素，因此需要先阻止默认设置
    */
-
   private onDragover(e: any) {
     // console.log('onDragover', e)
     e.preventDefault();

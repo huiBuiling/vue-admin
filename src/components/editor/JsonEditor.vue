@@ -17,7 +17,7 @@ import 'codemirror/addon/lint/json-lint';
 require('script-loader!jsonlint');
 
 @Component({
-  name: 'jsonEditor'
+  name: 'jsonEditor',
 })
 export default class JsonEditor extends Vue {
   private jsonEditor?: Editor;
@@ -53,10 +53,11 @@ export default class JsonEditor extends Vue {
       mode: 'application/json', // 实现json代码高亮
       gutters: ['CodeMirror-lint-markers'],
       theme: 'rubyblue', // 设置主题
-      lint: true
+      lint: true,
     });
 
-    const jsonData = '[{"items":[{"name":"Layi","age":"20"},{"name":"Jery","name":"22"},{"name":"May","age":"21"}],"name":"机电学院"},{"items":[{"name":"Kaolary","age":"24"},{"name":"Forg","age":"21"},{"name":"Seriaes","age":"22"},{"name":"Daliy","age":"21"}],"name":"金融学院"},{"items":[{"name":"Maries","age":"21"},{"name":"Boarid","age":"23"},{"name":"Nacy","age":"22"},{"name":"Jery","age":"21"}],"name":"信息学院"},{"items":[{"name":"Herai","age":"20"},{"name":"Paris","age":"22"},{"name":"Jack","age":"23"}],"name":"商学院"}]';
+    const jsonData =
+      '[{"items":[{"name":"Layi","age":"20"},{"name":"Jery","name":"22"},{"name":"May","age":"21"}],"name":"机电学院"},{"items":[{"name":"Kaolary","age":"24"},{"name":"Forg","age":"21"},{"name":"Seriaes","age":"22"},{"name":"Daliy","age":"21"}],"name":"金融学院"},{"items":[{"name":"Maries","age":"21"},{"name":"Boarid","age":"23"},{"name":"Nacy","age":"22"},{"name":"Jery","age":"21"}],"name":"信息学院"},{"items":[{"name":"Herai","age":"20"},{"name":"Paris","age":"22"},{"name":"Jack","age":"23"}],"name":"商学院"}]';
     this.value = JSON.parse(jsonData);
     this.jsonEditor.setValue(JSON.stringify(jsonData, null, 2));
   }

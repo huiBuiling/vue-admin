@@ -1,13 +1,66 @@
+- 潮汕旅游
+  10.1 出发去潮州
+  10.2 潮州玩一天
+  牌坊街,广济桥,开元寺，主要是吃
+
+  10.3 早起上南澳岛 -> 青澳湾
+  南澳岛逛青澳湾，金银岛，总兵府。吃海鲜，够鲜。
+  晚上住可以选择青澳湾的聆涛小栈，或者选择后宅县城的哒浪哒浪客栈。
+
+  10.5 回广州
+  长隆 1 日游
+
+- 北海旅游
+  10.1：到达北海：（住北海）
+  侨港海滩、冠头岭国家森林公园、金海湾红树林、海底世界楼主根据个人喜欢选择景点游览，下午北海银滩看日落；买好去涠洲岛的船票，晚上北部湾广场，老街转转
+
+  10.2：早上早班船去涠洲岛，，住涠洲岛
+  游涠洲岛火山地质公园、滴水丹屏看日落，晚上南湾大排档吃海鲜
+
+  10.3：早上出发，住涠洲岛
+  五彩滩看日出，五彩公路、天主教堂，圣母堂、贝壳沙滩 ，石螺口沙滩看日落，
+
+  10.4：回北海，游玩或者返程
+
+  10.5 回广州
+  长隆 1 日游
+
 # h5 拖曳
 
-# 拖曳流程
+## 左侧拖曳到右侧流程
 
 - 允许拖曳
   `draggable：<el-button draggable id="btn">操作按钮</el-button>`
 - 拖曳过程：即从左侧边栏拖曳到右侧 canvas 上
+
   - onDragstart(开始)
   - onDrop(释放元素)，onDragend(结束)，onDragover(移动)
+
+  - 设置行为为复制，保留原始组件(避免拖曳后左侧组件不存在)
+    `e.dataTransfer.dropEffect = 'copy';`
+
 - 拖曳结果：
+
+## 块内随意拖曳
+
+- onMouseDown 操作
+
+  - 设置元素位置
+  - 注意：上下左右边界值
+
+- 监听 mousemove
+  `document.addEventListener('mousemove', move, { passive: false, });`
+
+- 鼠标弹起，取消选中移动
+
+```
+  document.addEventListener('mouseup', up);
+  const up = (ev: any) => {
+    document.removeEventListener('mousemove', move);
+    document.removeEventListener('mouseup', up);
+    // return false
+  };
+```
 
 ## 属性
 

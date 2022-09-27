@@ -2,33 +2,36 @@
 @import './layout.scss';
 
 /* el */
-.el-menu{
+.el-menu {
   background-color: $barColor !important;
   border-right: none !important;
   // el-submenu is-active is-opened
-  .el-submenu{
+  .el-submenu {
     // color: $barFontColor;
     // font-size: $barFont;
-    .el-submenu__title{
-      i, span{
+    .el-submenu__title {
+      i,
+      span {
         color: $barFontColor;
         font-size: $barFont;
       }
     }
   }
-  .el-menu-item, .el-submenu__title{
+  .el-menu-item,
+  .el-submenu__title {
     color: $barFontColor;
     font-size: $barFont;
     height: 44px !important;
     line-height: 44px !important;
-    i{
+    i {
       color: $color;
     }
-    &:focus, &:hover{
+    &:focus,
+    &:hover {
       background-color: $barLiBgColor;
       border-right: 3px solid $barLiBorColor;
     }
-    &.is-active{
+    &.is-active {
       background-color: $barLiBgColor;
       border-right: 3px solid $barLiBorColor;
     }
@@ -38,13 +41,13 @@
 /* components */
 
 /* icon */
-.ad-icons{
-  .ad-icons-div{
+.ad-icons {
+  .ad-icons-div {
     background: $color;
     @include divCon;
     padding: 10px;
     height: auto;
-    .ad-icons-item{
+    .ad-icons-item {
       width: 12%;
       min-width: 140px;
       height: 145px;
@@ -53,37 +56,37 @@
       float: left;
       color: $color2;
       .svg-icon {
-          display: inline-block;
-          width: 16px;
-          height: 16px;
-          color: inherit;
-          vertical-align: middle;
-          fill: none;
-          stroke: currentColor;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        color: inherit;
+        vertical-align: middle;
+        fill: none;
+        stroke: currentColor;
       }
 
       .svg-fill {
-          fill: currentColor;
-          stroke: none;
+        fill: currentColor;
+        stroke: none;
       }
 
       .svg-up {
-          /* default */
-          transform: rotate(0deg);
+        /* default */
+        transform: rotate(0deg);
       }
 
       .svg-right {
-          transform: rotate(90deg);
+        transform: rotate(90deg);
       }
 
       .svg-down {
-          transform: rotate(180deg);
+        transform: rotate(180deg);
       }
 
       .svg-left {
-          transform: rotate(-90deg);
+        transform: rotate(-90deg);
       }
-      .ad-icon-items-text{
+      .ad-icon-items-text {
         margin-bottom: 0;
         font-size: $font18;
       }
@@ -92,15 +95,17 @@
 }
 
 /* chart */
-.ad-chart{
-  .ad-chart-line, .ad-chart-column, .ad-chart-pie{
+.ad-chart {
+  .ad-chart-line,
+  .ad-chart-column,
+  .ad-chart-pie {
     background: $color;
     @include divCon;
     padding: 50px 20px;
   }
-  .ad-chart-complex{
+  .ad-chart-complex {
     @include divCon;
-    .ad-chart-complex-i{
+    .ad-chart-complex-i {
       width: 300px;
       height: 110px;
       background: $color;
@@ -113,44 +118,47 @@
 }
 
 /* editor */
-.ad-editor{
-  .ad-editor-mk, .ad-editor-json, .ad-editor-rich{
+.ad-editor {
+  .ad-editor-mk,
+  .ad-editor-json,
+  .ad-editor-rich {
     @include divCon;
   }
-  .ad-editor-mk{
-    .markdown-body{
+  .ad-editor-mk {
+    .markdown-body {
       min-height: 300px !important;
       height: 100%;
     }
   }
-  .ad-editor-json{
-    .CodeMirror{
+  .ad-editor-json {
+    .CodeMirror {
       height: 100%;
       background: $color;
       text-align: left;
-      .CodeMirror-gutter{
+      .CodeMirror-gutter {
         background: #3c444d;
       }
     }
-    .cm-s-rubyblue .CodeMirror-gutters{
+    .cm-s-rubyblue .CodeMirror-gutters {
       border-color: $barLiBorColor !important;
     }
   }
-  .ad-editor-rich{
-    .quill-editor{
+  .ad-editor-rich {
+    .quill-editor {
       height: 100%;
       background: $color;
-      .ql-toolbar.ql-snow{
+      .ql-toolbar.ql-snow {
         border-width: 0 0 1px 0;
       }
-      .ql-container{
+      .ql-container {
         height: calc(100% - 41px);
         border: none !important;
-        .ql-editor{
+        .ql-editor {
           color: $color2;
           font-size: 15px;
           line-height: 1.5;
-          font-family: Menlo, "Ubuntu Mono", Consolas, "Courier New", "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+          font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB',
+            'WenQuanYi Micro Hei', sans-serif;
         }
       }
     }
@@ -158,38 +166,39 @@
 }
 
 /* screen */
-$s-bgColor:#1E1E1E;
-$s-barColor:#3C3C3C;
+$s-bgColor: #1e1e1e;
+$s-barColor: #3c3c3c;
 $s-color: #fff;
-.ad-screen{
+.ad-screen {
   width: 100%;
   height: 100%;
   background: $color;
-  .screen-top{
+  .screen-top {
     width: 100%;
     height: 66px;
     line-height: 66px;
     text-align: center;
   }
-  .screen-con{
+  .screen-con {
     display: flex;
-    height: 100%;
+    height: calc(100% - 66px);
     background: $s-bgColor;
     color: $s-color;
   }
-  .screen-con-l, .screen-con-r{
+  .screen-con-l,
+  .screen-con-r {
     width: 200px;
     color: $s-color;
     padding: 15px;
   }
-  .screen-con-l{
+  .screen-con-l {
     display: flex;
     flex-direction: column;
-    img{
+    img {
       margin: 10px 0;
     }
   }
-  .screen-con-c{
+  .screen-con-c {
     flex: 1;
     background: $s-barColor;
     border: 1px solid $s-bgColor;
@@ -198,13 +207,17 @@ $s-color: #fff;
     position: relative;
   }
 
-  .el-row{
+  .el-row {
     text-align: left;
     margin-left: 14px;
   }
-  .el-button{
+  .el-button {
     height: 30px;
     line-height: 30px;
     padding: 0 10px;
+  }
+
+  .ads-con {
+    height: 100%;
   }
 }

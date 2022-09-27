@@ -107,63 +107,63 @@ export default class ScreenCon extends Vue {
   }
 
   /**
-   * 鼠标按下, 此时距离
-   * a -> 获取鼠标距离页面：上和左的距离
-   * b -> 获取当前组件距离页面：上和左的距离
-   * c -> 鼠标距离元素的距离 = 鼠标a - 元素b
-   *
-   * 鼠标移动
-   * 鼠标距离页面距离 - 起始时，鼠标距离元素 = 元素起始位置
+   * 鼠标按下
    */
   private onMouseDown(e: any) {
-    // 未选中任何元素
-    if (!e.currentTarget.id) return;
-    console.log(`output->e.currentTarget.id`, e.currentTarget.id);
-
     this.flags = true;
     const curid = e.currentTarget.id;
-    const btnDom = document.getElementById(curid) as HTMLElement;
     const editorDom = document.getElementById('editor') as HTMLElement;
+    const btnDom = document.getElementById(curid) as HTMLElement;
     // const editors = editorDom.getBoundingClientRect() as DOMRect;
+
     // 获取鼠标距离页面左侧距离
-    const startPoint = {
-      mousex: e.clientX, // 鼠标距离页面上侧距离
-      mousey: e.clientY, // 鼠标距离页面上侧距离
-      btnx: btnDom.offsetLeft, // 元素距离页面左侧距离
-      btny: btnDom.offsetTop, // 元素距离页面上侧距离
-      btnw: btnDom.offsetWidth, // 元素距离页面左侧距离
-      btnh: btnDom.offsetHeight, // 元素距离页面上侧距离
-    };
+    const x = e.clientX;
+    // 获取鼠标距离页面上侧距离
+    const y = e.clientY;
+    // 元素距离页面左侧距离
+    const elex = btnDom.offsetLeft;
+    // 元素距离页面上侧距离
+    const eley = btnDom.offsetTop;
     // 相减得到鼠标距离元素的距离
-    const X = startPoint.mousex - startPoint.btnx;
-    const Y = startPoint.mousey - startPoint.btny;
+    const X = x - elex;
+    const Y = y - eley;
     console.log(X, Y);
 
     /**
      * 鼠标移动
-     * 右侧边界值：
      */
     const move = (moveEvent: any) => {
       // 鼠标移动过程中 获取鼠标距离页面距离
       const movex = moveEvent.clientX;
       const movey = moveEvent.clientY;
-
-      // 元素移动过程中距离页面左/上侧距离
+      console.log(`output->move`, x, y, movex, movey);
+      // 元素移动过程中距离页面左侧距离
       let leftx = movex - X;
       let lefty = movey - Y;
       // 1.左侧边界值
       leftx = leftx <= 0 ? 0 : leftx;
       // 2.上侧边界值
       lefty = lefty <= 0 ? 0 : lefty;
+      // 3.右侧边界值: editor宽 - 元素宽
+      // const rightx = editors.width - btnDom.offsetWidth
+      const rightx = editorDom.clientWidth - btnDom.offsetWidth;
+      // console.log('editors', editors.width, btnDom.offsetWidth, leftx);
+      if (leftx >= editorDom.clientWidth) {
+        leftx = rightx;
+      }
 
-      // 3. 右侧边界值 -> 减去元素宽度
-      if (leftx + startPoint.btnw > editorDom.clientWidth) {
-        leftx = editorDom.clientWidth - startPoint.btnw;
-      }
-      // 4. 下侧边界值 -> 减去元素高度
-      if (lefty + startPoint.btnh > editorDom.clientHeight) {
-        lefty = editorDom.clientHeight - startPoint.btnh;
-      }
+      // 4.下侧边界值: editor高 - 元素高
+      // const righty = editors.y - btnDom.offsetHeight;
+      // if (lefty >= righty) {
+      //   lefty = righty;
+      // }
+
+      // 鼠标移动过程中 获取鼠标距离页面距离 - 鼠标距离元素的距离 =元素的left top值
+      // btnDom.style.left = leftx + 'px';
+      // btnDom.style.top = lefty + 'px';
+      // this.left = leftx
+      // this.top = lefty
+      // console.log('btndom', leftx, lefty, movex, movey)
       this.changeComp(curid, {
         left: leftx + 'px',
         top: lefty + 'px',
@@ -179,12 +179,54 @@ export default class ScreenCon extends Vue {
       // return false
     };
 
-    // // 阻止页面的滑动默认事件
+    // 阻止页面的滑动默认事件
     document.addEventListener('mousemove', move, {
       passive: false,
     });
     document.addEventListener('mouseup', up);
   }
+
+  /**
+   * 鼠标按下
+   */
+  /* private onMouseDown2(e: any) {
+    this.flags = true
+    const editorDom = document.getElementById('editor') as HTMLElement;
+    const editors = editorDom.getBoundingClientRect() as DOMRect
+
+    // 获取编辑器的位移信息，每次点击时都需要获取一次。主要是为了方便开发时调试用。
+    getBoundingClientRect()
+    console.log('editors', editors)
+    this.editorX = editors.x 
+    this.editorY = editors.y
+    const startX = e.clientX
+    const startY = e.clientY
+    this.start.x = startX - this.editorX
+    this.start.y = startY - this.editorY
+    this.left = startX - this.editorX
+    this.top = startY - this.editorY
+
+    const move = (moveEvent: any) => {
+      if (moveEvent.clientX < startX) {
+          this.start.x = moveEvent.clientX - this.editorX
+      }
+
+      if (moveEvent.clientY < startY) {
+          this.start.y = moveEvent.clientY - this.editorY
+      }
+    }
+
+    const up = (ev: any) => {
+      document.removeEventListener('mousemove', move)
+      document.removeEventListener('mouseup', up)
+      if (ev.clientX === startX && e.clientY === startY) {
+        return
+      }
+    }
+
+    document.addEventListener('mousemove', move)
+    document.addEventListener('mouseup', up)
+  } */
 }
 </script>
 

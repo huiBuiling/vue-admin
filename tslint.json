@@ -26,6 +26,9 @@
       }
     ],
     "semicolon": [false, "aways"],
-    "no-trailing-whitespace": false
+    "no-trailing-whitespace": false,
+    "curly": false,
+    "triple-equals": false,
+    "member-access": false
   }
 }
