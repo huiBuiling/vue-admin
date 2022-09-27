@@ -11,19 +11,19 @@
     </div>
     <div class="screen-con">
       <div class="screen-con-l" @dragstart="onDragstart">
-        <el-button draggable id="btn">操作按钮</el-button>
-        <!-- <img draggable class="" style="width:170px;" id="image" src="../assets/screen2.jpeg" /> -->
+        <el-button draggable :id="screenComp.length + 1" :data-type="'btn'">操作按钮</el-button>
+        <img draggable class="" style="width:170px;" id="image" src="../assets/screen2.jpeg" />
       </div>
 
       <!-- 此方法均是处理给左侧组件拖曳到右侧内容块中 -->
       <!-- @drop="onDrop" @dragend="onDragend" @dragover="onDragover" -->
-      <div class="screen-con-c">
+      <div class="screen-con-c" @drop="onDrop" @dragend="onDragend" @dragover="onDragover">
         <!-- 画布 -->
         <ScreenCenter :screenComp="screenComp" @changeComp="changeComp" />
       </div>
 
       <!-- 属性，动画，事件 -->
-      <TabAttr />
+      <!-- <TabAttr /> -->
     </div>
   </div>
 </template>
@@ -41,7 +41,7 @@ import { Button } from 'element-ui';
   },
 })
 export default class Screen extends Vue {
-  // 画布组件
+  // 画布组件数据
   public screenComp: any[] = [
     {
       id: 1,
@@ -53,6 +53,18 @@ export default class Screen extends Vue {
         left: '0',
       },
     },
+    {
+      id: 2,
+      label: 'rect',
+      component: 'rect',
+      text: 'rect',
+      style: {
+        top: '200px',
+        left: '0',
+        width: '200px',
+        height: '100px',
+      },
+    },
     // {
     //   id: 2,
     //   label: 'image',
@@ -60,8 +72,8 @@ export default class Screen extends Vue {
     //   text: 'image',
     //   style: {
     //     top: '100px',
-    //     left: '100px'
-    //   }
+    //     left: '100px',
+    //   },
     // },
     {
       id: 3,
@@ -81,18 +93,6 @@ export default class Screen extends Vue {
       style: {
         top: '100px',
         left: '0',
-      },
-    },
-    {
-      id: 5,
-      label: 'rect',
-      component: 'rect',
-      text: 'rect',
-      style: {
-        top: '200px',
-        left: '0',
-        width: '200px',
-        height: '100px',
       },
     },
   ];
@@ -119,30 +119,36 @@ export default class Screen extends Vue {
     // e.target.style.opacity = 0.5
     // e.target.style.background = '#000'
     e.dataTransfer.setData('id', e.target.id);
+    this.curType = e.target.attributes['data-type'].value;
   }
 
   /**
    * e.dataTransfer
    * 通过e.dataTransfer 获取存储的拖拽元素id, 并添加到画布中
    */
+  private curType = '';
   private onDrop(e: any) {
     e.preventDefault();
     e.stopPropagation();
     const id = e.dataTransfer.getData('id');
-    console.log('id', id);
-    this.screenComp = [
-      ...this.screenComp,
-      {
-        id,
-        label: id,
-        component: id,
-        text: id,
-        style: {
-          top: e.offsetY + 'px',
-          left: e.offsetX + 'px',
-        },
+    console.log('id', id, this.curType);
+    this.screenComp = [...this.screenComp, this.addComp(e)];
+  }
+
+  // 不同类型组件设置
+  private addComp(e: any) {
+    const id: string = e.dataTransfer.getData('id');
+    const type: string = this.curType;
+    return {
+      id: +id,
+      label: type,
+      component: type,
+      text: type,
+      style: {
+        top: e.offsetY + 'px',
+        left: e.offsetX + 'px',
       },
-    ];
+    };
   }
 
   /**

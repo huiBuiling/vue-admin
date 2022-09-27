@@ -24,10 +24,10 @@
       />
 
       <!-- 区域框 -->
-      <el-input v-if="item.label === 'textarea'" type="textarea" v-model="item.label" />
+      <el-input v-if="item.label === 'textarea'" type="textarea" v-model="item.text" />
 
-      <!-- 输入框 -->
-      <el-input v-if="item.label === 'input'" v-model="item.label" />
+      <!-- 输入框, 啊哈哈编辑消失，是因为显示依赖 就是绑定值-->
+      <el-input v-if="item.label === 'input'" v-model="item.text" />
 
       <!-- 矩形 -->
       <div v-if="item.label === 'rect'" class="rect">{{ item.label }}</div>
@@ -86,11 +86,11 @@ export default class ScreenCon extends Vue {
   }
 
   private mounted() {
-    console.log('screenComp', this.screenComp);
+    console.log('mounted_screenComp', this.screenComp);
   }
 
   private updated() {
-    console.log('screenComp2', this.screenComp);
+    console.log('updated_screenComp2', this.screenComp);
   }
 
   private getShapeStyle(style: any) {
@@ -141,7 +141,6 @@ export default class ScreenCon extends Vue {
 
     /**
      * 鼠标移动
-     * 右侧边界值：
      */
     const move = (moveEvent: any) => {
       // 鼠标移动过程中 获取鼠标距离页面距离
@@ -151,6 +150,7 @@ export default class ScreenCon extends Vue {
       // 元素移动过程中距离页面左/上侧距离
       let leftx = movex - X;
       let lefty = movey - Y;
+
       // 1.左侧边界值
       leftx = leftx <= 0 ? 0 : leftx;
       // 2.上侧边界值
@@ -164,6 +164,8 @@ export default class ScreenCon extends Vue {
       if (lefty + startPoint.btnh > editorDom.clientHeight) {
         lefty = editorDom.clientHeight - startPoint.btnh;
       }
+
+      console.log(`output->move————`, leftx, lefty);
       this.changeComp(curid, {
         left: leftx + 'px',
         top: lefty + 'px',
@@ -171,7 +173,7 @@ export default class ScreenCon extends Vue {
     };
 
     /**
-     * 鼠标移动
+     * 鼠标弹起
      */
     const up = (ev: any) => {
       document.removeEventListener('mousemove', move);
