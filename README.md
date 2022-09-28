@@ -29,6 +29,8 @@ yarn lint
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+- 学习：https://github.com/woai3c/visual-drag-demo
+
 # err
 
 - Node Sass does not yet support your current environment: Windows 64-bit with Unsupported runtime

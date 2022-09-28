@@ -6,34 +6,34 @@
   background-color: $conColor;
   color: $color;
   font-size: $font14;
-  .ad-nav{
+  .ad-nav {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1001;
+    z-index: 10;
     width: 200px;
     height: 100%;
     color: $barFontColor;
     text-align: left;
-    .ad-nav-logo{
+    .ad-nav-logo {
       height: 50px;
       line-height: 50px;
       font-size: $barFont;
       background-color: $logoColor;
       text-align: center;
     }
-    .ad-nav-con{
+    .ad-nav-con {
       height: calc(100% - 50px);
       background-color: $barColor;
     }
   }
-  .ad-con{
+  .ad-con {
     display: block;
     width: calc(100% - 200px);
     height: 100%;
     margin-left: 200px;
     color: $conFontColor;
-    .ad-con-logo{
+    .ad-con-logo {
       height: 50px;
       line-height: 50px;
       background-color: $conBarColor;
@@ -41,24 +41,23 @@
       font-size: $conBarFont;
       text-align: left;
       padding: 0 20px;
-      .ad-con-fold{
-        i{
+      .ad-con-fold {
+        i {
           line-height: 50px;
           font-size: 30px;
           font-weight: normal;
         }
       }
     }
-    .ad-con-all{
+    .ad-con-all {
       width: 100%;
       height: calc(100% - 50px);
       overflow: hidden;
       padding: 20px;
       //background-color: $conColor;
-      &>div{
+      & > div {
         @include divAll;
       }
     }
   }
 }
-

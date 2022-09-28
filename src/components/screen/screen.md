@@ -25,40 +25,87 @@
   10.5 回广州
   长隆 1 日游
 
+- 自驾游
+
+  - 柳州
+
+    1. 柳侯公园
+    2. 龙潭公园
+    3. 立鱼峰风景区
+    4. 马鹿山奇石博览园
+    5. 百里柳江旅游景区
+    6. 融水田头苗寨（广西壮族自治区柳州市融水苗族自治县四荣乡东田村
+
+  - 桂林
+    1：象鼻山—靖江王城—东西巷—逍遥楼—两江四湖
+    2：龙脊梯田
+    3：漓江—兴坪古镇—十里画廊——阳朔西街
+    4：银子岩—遇龙河—世外桃源
+  - 河池
+
 # h5 拖曳
 
 ## 左侧拖曳到右侧流程
 
-- 允许拖曳
+- 允许拖曳，draggable 属性
   `draggable：<el-button draggable id="btn">操作按钮</el-button>`
 - 拖曳过程：即从左侧边栏拖曳到右侧 canvas 上
 
   - onDragstart(开始)
-  - onDrop(释放元素)，onDragend(结束)，onDragover(移动)
 
-  - 设置行为为复制，保留原始组件(避免拖曳后左侧组件不存在)
-    `e.dataTransfer.dropEffect = 'copy';`
+    - 设置当次拖曳组件 id
+      `e.dataTransfer.setData('id', e.target.id);`
+    - 设置当次拖曳组件类型
+      `e.dataTransfer.setData('dataType', e.target.attributes['data-type'].value);`
+
+  - onDrop(释放元素)，设置新增组件
+
+  ```
+  // 获取组件id
+  e.dataTransfer.getData('id')
+  // 获取组件type
+  e.dataTransfer.getData('dataType')
+
+  // 添加组件数据
+  {
+    id: +id,
+    label: type,
+    component: type,
+    text: type,
+    style: {
+      top: e.offsetY + 'px',
+      left: e.offsetX + 'px',
+    },
+  }
+  ```
+
+  - onDragover(移动)
+    - 设置行为为复制，保留原始组件(避免拖曳后左侧组件不存在)
+      `e.dataTransfer.dropEffect = 'copy';`
 
 - 拖曳结果：
+  - 根据组件列表数据对应显示不同组件及位置
 
 ## 块内随意拖曳
 
 - onMouseDown 操作
 
-  - 设置元素位置
+  - 组件上按下鼠标时，设置组件位置
   - 注意：上下左右边界值
 
-- 监听 mousemove
-  `document.addEventListener('mousemove', move, { passive: false, });`
+- mousemove 鼠标移动
 
-- 鼠标弹起，取消选中移动
+  - 记录：鼠标位置 - 起始时鼠标距离元素距离 = 元素起始位置
+    `document.addEventListener('mousemove', move, { passive: false, });`
+
+- mouseup 鼠标弹起，取消选中移动
 
 ```
   document.addEventListener('mouseup', up);
+
   const up = (ev: any) => {
     document.removeEventListener('mousemove', move);
     document.removeEventListener('mouseup', up);
-    // return false
   };
 ```
 
@@ -75,7 +122,7 @@
   - dragleave: 当拖动元素离开目标区域时触发事件
   - dragover: 拖动元素在目标区域中移动时触发事件
 
-## vue 拖曳 demo
+# vue 拖曳 demo
 
 - template
 
@@ -145,7 +192,7 @@
 </script>
 ```
 
-## DataTransfer 对象
+# DataTransfer 对象
 
 - https://developer.mozilla.org/zh-CN/docs/Web/API/DataTransfer
 - 拖拽数据传递对象，一般使用方式 event.dataTransfer

@@ -14,20 +14,16 @@
       :id="item.id"
     >
       <!-- 按钮 -->
-      <el-button v-if="item.label === 'btn'">操作按钮{{ item.text }}</el-button>
+      <el-button class="btn" v-if="item.label === 'btn'">操作按钮{{ item.text }}</el-button>
 
       <!-- 图片 -->
-      <img
-        style="width:80px; height: 100px"
-        src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2620306848,1106594030&fm=26&gp=0.jpg"
-        v-if="item.label === 'image'"
-      />
+      <img class="img" style="width:170px" src="../../assets/screen2.jpeg" v-if="item.label === 'image'" />
 
       <!-- 区域框 -->
-      <el-input v-if="item.label === 'textarea'" type="textarea" v-model="item.text" />
+      <el-input class="textarea" v-if="item.label === 'textarea'" type="textarea" v-model="item.text" />
 
       <!-- 输入框, 啊哈哈编辑消失，是因为显示依赖 就是绑定值-->
-      <el-input v-if="item.label === 'input'" v-model="item.text" />
+      <el-input class="input" v-if="item.label === 'input'" v-model="item.text" />
 
       <!-- 矩形 -->
       <div v-if="item.label === 'rect'" class="rect">{{ item.label }}</div>
@@ -190,7 +186,7 @@ export default class ScreenCon extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .ads-con {
   position: relative;
   // width: 300px;
@@ -200,10 +196,16 @@ export default class ScreenCon extends Vue {
   position: absolute;
 }
 .rect {
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 100px;
   border: 1px solid #fff;
   border-radius: 2px;
   padding: 5px 10px;
+}
+.btn,
+.img,
+.input,
+.textarea {
+  width: 200px;
 }
 </style>
